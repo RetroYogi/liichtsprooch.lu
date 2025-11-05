@@ -2,6 +2,9 @@
 
 This repository contains a local copy of the website https://liichtsprooch.lu with all essential assets downloaded and working offline.
 
+**🌐 Live Site:** Once GitHub Pages is enabled, this site will be available at:
+`https://retroyogi.github.io/liichtsprooch.lu/`
+
 ## Structure
 
 ```
@@ -26,9 +29,29 @@ To view the website locally:
 2. All essential assets load from the local `assets/` folder
 3. Works completely offline (except for optional theme background images)
 
-## Deployment to New Domain
+## GitHub Pages Deployment
 
-To deploy this website to a new domain:
+This repository is ready for GitHub Pages! To enable:
+
+1. **Merge the Pull Request** (if not already merged):
+   - Go to the GitHub repository
+   - Navigate to "Pull requests"
+   - Merge the pull request to `main` branch
+
+2. **Enable GitHub Pages**:
+   - Go to repository Settings → Pages
+   - Under "Source", select branch: `main`
+   - Keep folder as `/ (root)`
+   - Click "Save"
+
+3. **Access Your Site**:
+   - Wait 1-2 minutes for deployment
+   - Visit: `https://retroyogi.github.io/liichtsprooch.lu/`
+   - The site will load `index.html` automatically
+
+## Deployment to Other Hosting
+
+To deploy this website to any other hosting service:
 1. Upload all files maintaining the directory structure
 2. Ensure `assets/` folder is in the same directory as the HTML file
 3. The website uses relative paths (`./assets/...`), so it works on any domain
