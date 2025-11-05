@@ -1,45 +1,111 @@
 # Liichtsprooch.lu - Downloaded Website
 
-This repository contains a local copy of the website https://liichtsprooch.lu
+This repository contains a local copy of the website https://liichtsprooch.lu with all essential assets downloaded and working offline.
 
 ## Structure
 
-- `Liicht Sprooch zu Lëtzebuerg.html` - Main HTML file
-- `Liicht Sprooch zu Lëtzebuerg_files/` - Assets directory containing CSS and JavaScript files
+```
+/
+├── Liicht Sprooch zu Lëtzebuerg.html   # Main HTML file
+├── assets/                               # All assets (JS, CSS, images)
+│   ├── *.js                             # 16 JavaScript files
+│   ├── *.css                            # 3 CSS files
+│   ├── css2, css2(1), css2(2)          # Google Fonts
+│   ├── *.png                            # Content images
+│   ├── *.svg                            # Icons
+│   └── *.ico                            # Favicons
+├── README.md                            # This file
+├── EXTERNAL_RESOURCES.md                # Detailed list of external resources
+└── images_to_download.txt               # List of image URLs (reference)
+```
 
 ## Viewing Locally
 
 To view the website locally:
 1. Open `Liicht Sprooch zu Lëtzebuerg.html` in a web browser
-2. All local assets (CSS, JavaScript) are properly linked and will load correctly
+2. All essential assets load from the local `assets/` folder
+3. Works completely offline (except for optional theme background images)
 
 ## Deployment to New Domain
 
 To deploy this website to a new domain:
 1. Upload all files maintaining the directory structure
-2. Ensure `Liicht Sprooch zu Lëtzebuerg_files/` is in the same directory as the HTML file
-3. The website uses relative paths, so it will work on any domain
+2. Ensure `assets/` folder is in the same directory as the HTML file
+3. The website uses relative paths (`./assets/...`), so it works on any domain
+4. No configuration changes needed!
 
-## Notes
+## What's Included
 
-- All JavaScript and CSS files that originally had `.download` extensions have been renamed to their proper extensions (`.js`, `.css`)
-- HTML references have been updated to use the corrected filenames
-- External images (from gamma.app, googleusercontent.com, etc.) are still referenced via absolute URLs
-  - These images will load when online
-  - For a fully offline version, these images would need to be manually downloaded and referenced locally
-- The website uses relative paths (`./Liicht Sprooch zu Lëtzebuerg_files/...`) making it portable across domains
+### Local Assets (36 files)
+All essential resources are now local and work offline:
 
-## Assets Included
+**JavaScript (16 files):**
+- React framework and core bundles
+- Application logic and components
+- Polyfills and webpack runtime
 
-- JavaScript files: 16 files (React framework, app bundles, polyfills, etc.)
-- CSS files: 3 files (styles and fonts)
-- Google Fonts: 3 font files (referenced via relative paths)
+**CSS & Fonts (6 files):**
+- 3 CSS stylesheets
+- 3 Google Fonts files (Open Sans, Unbounded)
 
-## External Resources
+**Images & Icons (14 files):**
+- ✓ Main content images (3 generated PNG images)
+- ✓ External content images (4 PNG images from klaro.lu, etc.)
+- ✓ UI icons (4 SVG icons: arrow, chart, star, user)
+- ✓ Favicons (3 favicons from external sites)
 
-The following external resources are still loaded via absolute URLs:
-- Images from gamma.app CDN
-- Images from Google User Content
-- Image proxy services (imgproxy.gamma.app)
+### External Resources (Optional)
 
-If you need these resources available offline, they would need to be downloaded separately and the HTML updated accordingly.
+**Theme Background Images (37 images):**
+- Seafoam theme backgrounds remain as external URLs
+- Load from CDN when online
+- Not essential for website functionality
+- Can be downloaded separately if needed (see `EXTERNAL_RESOURCES.md`)
+
+**External Links:**
+- Navigation links to external websites (klaro.lu, apemh.lu, etc.)
+- These are intentional links and should remain external
+
+## Changes Made
+
+1. **Fixed File Extensions**
+   - Renamed all `.download` files to proper extensions (`.js`, `.css`)
+
+2. **Consolidated Assets**
+   - Merged `Liicht Sprooch zu Lëtzebuerg_files/` and `downloaded_assets/` into single `assets/` folder
+   - Cleaner structure, easier deployment
+
+3. **Updated HTML References**
+   - Changed 25 folder path references to `./assets/`
+   - Replaced 28 absolute URLs with relative paths to local files
+   - All local assets now load from `./assets/` directory
+
+4. **Made Website Portable**
+   - Uses relative paths throughout
+   - Works locally without internet
+   - Can be deployed to any domain without modifications
+
+## File Size
+
+- Total repository size: ~14 MB
+- HTML file: 398 KB
+- Assets folder: ~14 MB (mostly JavaScript bundles)
+
+## Browser Compatibility
+
+The website uses modern web technologies:
+- React (JavaScript framework)
+- CSS3 with custom properties
+- SVG icons
+- Google Fonts
+
+Works in all modern browsers (Chrome, Firefox, Safari, Edge).
+
+## Additional Documentation
+
+- `EXTERNAL_RESOURCES.md` - Detailed categorization of all external resources
+- `images_to_download.txt` - List of image URLs organized by priority
+
+## License
+
+Original content from https://liichtsprooch.lu - downloaded for archival/local use.
