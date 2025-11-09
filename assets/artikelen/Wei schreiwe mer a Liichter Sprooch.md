@@ -4,7 +4,7 @@
 
 Vill Leit denken, Liicht Sprooch wär ganz einfach: Just kuerz Sätz schreiwen an einfach Wierder benotzen. Mä et geet net nëmmen ëm d'Wiel vun de Wierder a vun de Sätz. En Text a Liicht Sprooch muss optimiséiert ginn, wat heescht: Iwwerflësseg Elementer ewechhuelen, feelend Kontext derbäisetzen.
 
-Ech weisen Iech wéi et funktionéiert!
+Mir weisen Iech wéi et funktionéiert!
 
 ### D'Grondreegelen
 

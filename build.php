@@ -219,7 +219,7 @@ function generate404Page() {
 function generateAboutPage() {
     global $categories;
     $currentPage = 'about';
-    $pageTitle = 'Iwwer eis - ' . SITE_TITLE;
+    $pageTitle = 'Iwwer dës Säit - ' . SITE_TITLE;
     $metaDescription = 'Méi iwwer Liicht Sprooch zu Lëtzebuerg';
     $canonicalUrl = SITE_URL . '/about/';
     $ogType = 'website';
@@ -229,7 +229,7 @@ function generateAboutPage() {
     ?>
     <main id="main-content">
         <section class="content-section" aria-labelledby="about-title">
-            <h1 id="about-title">Iwwer eis</h1>
+            <h1 id="about-title">Iwwer dës Säit</h1>
             <p>to-do</p>
         </section>
     </main>

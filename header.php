@@ -110,7 +110,7 @@ $articleUrlPattern = $isStatic ? '/artikel/%s/' : '/artikel/%s';
                         <?php endforeach; ?>
                     </ul>
                 </li>
-                <li><a href="<?php echo $aboutUrl; ?>" <?php echo ($currentPage ?? '') === 'about' ? 'class="active"' : ''; ?>>Iwwer eis</a></li>
+                <li><a href="<?php echo $aboutUrl; ?>" <?php echo ($currentPage ?? '') === 'about' ? 'class="active"' : ''; ?>>Iwwer dës Säit</a></li>
             </ul>
         </div>
     </nav>
