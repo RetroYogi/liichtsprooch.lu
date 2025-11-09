@@ -3,8 +3,8 @@
         <div class="footer-content">
             <p>&copy; <?php echo date('Y'); ?> Liicht Sprooch zu Lëtzebuerg Info-Site. All Rechter virbehalen.</p>
             <p>
-                <a href="/index.php">Startsäit</a> |
-                <a href="/rss.php">RSS Feed</a> |
+                <a href="<?php echo $homeUrl; ?>">Startsäit</a> |
+                <a href="<?php echo $rssUrl; ?>">RSS Feed</a> |
                 <a href="mailto:liichtsprooch@mailo.lu" rel="noopener">Kontakt</a>
             </p>
             <p>
