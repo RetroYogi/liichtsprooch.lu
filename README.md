@@ -6,97 +6,88 @@ A static website about Easy Language (Liicht Sprooch) in Luxembourg, built for G
 
 ---
 
-## For Content Editors
+## Quick Start
 
-**Want to add or edit an article?** Read **[HOW_TO_EDIT.md](HOW_TO_EDIT.md)**
+### For Content Contributors
 
-**TL;DR:**
-1. Edit markdown file on GitHub.com
-2. Commit changes
-3. Wait 2 minutes - automatically deployed!
+**Add or edit an article:**
+1. Edit markdown file on GitHub.com (or clone locally)
+2. Update `config.php` with article metadata
+3. Commit and push
+4. Wait 2 minutes - automatically deployed!
 
-No software installation needed. Works from any device.
+No software installation needed. See **[COLLABORATION_INSTRUCTIONS.md](COLLABORATION_INSTRUCTIONS.md)** for details.
 
----
-
-## For Developers
-
-### Quick Start
+### For Developers
 
 ```bash
 # Clone repository
 git clone https://github.com/USERNAME/liichtsprooch.git
 cd liichtsprooch
 
-# Build static site
+# Build static site locally
 php build.php
 
-# Preview locally
-cd docs
-php -S localhost:8000
+# Preview
+cd docs && php -S localhost:8000
 ```
 
-Visit: http://localhost:8000
+Visit http://localhost:8000
 
-### Project Structure
+---
+
+## How It Works
+
+```
+Edit markdown → Push to GitHub → GitHub Actions runs build.php → Deploys to GitHub Pages
+```
+
+**Nobody needs to run `php build.php` manually.** GitHub Actions does it automatically on every push.
+
+---
+
+## Project Structure
 
 ```
 liichtsprooch/
-├── Source Files (edit these):
-│   ├── config.php              # Article metadata
-│   ├── build.php               # Static site generator
-│   ├── templates/              # HTML templates
-│   └── assets/
-│       ├── styles.css          # Styles
-│       └── artikelen/          # Markdown articles
-│
-└── Generated Files (auto-created):
-    └── docs/                   # GitHub Pages serves this
-        ├── index.html
-        ├── artikel/
-        │   └── slug/index.html
-        ├── assets/
-        ├── rss.xml
-        └── CNAME
+├── config.php              # Article metadata & site config
+├── build.php               # Static site generator
+├── templates/              # HTML templates
+├── assets/
+│   ├── styles.css          # Styles
+│   └── artikelen/          # Markdown articles (edit these!)
+├── docs/                   # Generated static site (GitHub Pages serves this)
+└── .github/workflows/      # Auto-build configuration
 ```
-
-### How It Works
-
-```
-Edit markdown → Push to GitHub → GitHub Actions runs build.php → Deploys
-```
-
-**Nobody needs to run `php build.php` manually.** GitHub Actions does it automatically.
 
 ---
 
 ## Features
 
-- ✅ **Static HTML** - Fast, secure, works on GitHub Pages
-- ✅ **Path-like URLs** - `/artikel/slug-name/` (no query strings)
+- ✅ **Static HTML** - Fast, secure, no server-side processing
+- ✅ **Path-like URLs** - `/artikel/slug-name/` (SEO-friendly)
+- ✅ **Auto-deployment** - GitHub Actions builds on every push
 - ✅ **Markdown articles** - Easy to write and edit
-- ✅ **Auto-deployment** - GitHub Actions builds automatically
 - ✅ **Responsive** - Mobile-first design
-- ✅ **SEO optimized** - Meta tags, Open Graph, RSS feed
 - ✅ **WCAG 2.1 AA** - Fully accessible
-- ✅ **No database** - Just files and Git
+- ✅ **RSS feed** - Automatic generation
+- ✅ **No database** - File-based content
 
 ---
 
 ## Documentation
 
-- **[HOW_TO_EDIT.md](HOW_TO_EDIT.md)** - How to add/edit articles (start here!)
-- **[DEPLOY.md](DEPLOY.md)** - Deployment guide for GitHub Pages
+- **[START_HERE.md](START_HERE.md)** - Quick overview and navigation
+- **[COLLABORATION_INSTRUCTIONS.md](COLLABORATION_INSTRUCTIONS.md)** - How to add/edit articles
 - **[HTML_EMBEDS.md](HTML_EMBEDS.md)** - Embed videos, tables in articles
 - **[SECURITY.md](SECURITY.md)** - Security features
-- **[NEXT_STEPS.txt](NEXT_STEPS.txt)** - Quick deployment steps
 
 ---
 
 ## Technologies
 
 - **Static Site Generator:** PHP (build-time only)
-- **Content:** Markdown (Parsedown 1.8.0)
+- **Markdown Parser:** Parsedown 1.8.0
 - **Hosting:** GitHub Pages (free)
 - **Deployment:** GitHub Actions (automatic)
 - **Frontend:** Vanilla JavaScript, Modern CSS
@@ -112,26 +103,16 @@ Edit markdown → Push to GitHub → GitHub Actions runs build.php → Deploys
 
 ---
 
-## Deployment
+## Contributing
 
-See **[NEXT_STEPS.txt](NEXT_STEPS.txt)** for complete instructions.
+1. Fork the repository
+2. Create a feature branch
+3. Edit markdown files in `assets/artikelen/`
+4. Update `config.php` with article metadata
+5. Push and create Pull Request
+6. GitHub Actions auto-builds on merge
 
-**Quick version:**
-1. Push to GitHub
-2. Enable GitHub Pages (serve from `/docs`)
-3. Enable GitHub Actions (write permissions)
-4. Done!
-
-Updates deploy automatically in 2 minutes.
-
----
-
-## Statistics
-
-- **Articles:** 8
-- **Categories:** 4
-- **Total size:** 2.8 MB (generated)
-- **Build time:** ~1 second
+See **[COLLABORATION_INSTRUCTIONS.md](COLLABORATION_INSTRUCTIONS.md)** for detailed instructions.
 
 ---
 
@@ -145,16 +126,3 @@ Code: Open source
 ## Contact
 
 Email: liichtsprooch@mailo.lu
-
----
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Edit markdown files in `assets/artikelen/`
-4. Update `config.php` with article metadata
-5. Push and create Pull Request
-6. GitHub Actions auto-builds on merge
-
-See **[HOW_TO_EDIT.md](HOW_TO_EDIT.md)** for details.

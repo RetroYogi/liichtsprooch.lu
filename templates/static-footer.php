@@ -5,7 +5,7 @@
             <p>
                 <a href="/">Startsäit</a> |
                 <a href="/rss.xml">RSS Feed</a> |
-                <a href="mailto:liichtsprooch@mailo.lu" rel="noopener">Kontakt</a>
+                <a href="mailto:contact@key4.lu" rel="noopener">Kontakt</a>
             </p>
             <p>
                 Wichtegen Hiweis: Dësen Internet Site gouf zum groussen Deel mat Hëllef vu generativer KI erstallt.

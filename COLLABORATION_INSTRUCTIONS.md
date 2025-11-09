@@ -1,8 +1,8 @@
-# How to Edit the Website
+# Collaboration Instructions
 
 ## Simple Rule: Edit and Push. That's It.
 
-GitHub automatically builds and deploys your changes. You never need to run `php build.php` manually.
+GitHub automatically builds and deploys your changes in ~2 minutes. You never need to run `php build.php` manually.
 
 ---
 

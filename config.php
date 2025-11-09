@@ -5,7 +5,7 @@
  */
 
 // Site configuration
-define('SITE_TITLE', 'Liicht Sprooch zu Lëtzebuerg');
+define('SITE_TITLE', 'Liicht Sprooch Info-Site');
 define('SITE_URL', 'https://liichtsprooch.lu'); // Update with your actual domain
 define('SITE_DESCRIPTION', 'Informatiounen iwwer Liicht Sprooch zu Lëtzebuerg - Facile à lire et à comprendre (FALC) - Leichte Sprache');
 
