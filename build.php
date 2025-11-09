@@ -53,6 +53,10 @@ echo "✓ Generated RSS feed (rss.xml)\n";
 generate404Page();
 echo "✓ Generated 404 page\n";
 
+// Generate About page
+generateAboutPage();
+echo "✓ Generated About page\n";
+
 // Copy CNAME file if it exists
 if (file_exists(SOURCE_DIR . '/CNAME')) {
     copy(SOURCE_DIR . '/CNAME', BUILD_DIR . '/CNAME');
@@ -207,6 +211,39 @@ function generate404Page() {
     $html = ob_get_clean();
 
     file_put_contents(BUILD_DIR . '/404.html', $html);
+}
+
+/**
+ * Generate About page
+ */
+function generateAboutPage() {
+    global $categories;
+    $currentPage = 'about';
+    $pageTitle = 'Iwwer eis - ' . SITE_TITLE;
+    $metaDescription = 'Méi iwwer Liicht Sprooch zu Lëtzebuerg';
+    $canonicalUrl = SITE_URL . '/about/';
+    $ogType = 'website';
+
+    ob_start();
+    include SOURCE_DIR . '/templates/static-header.php';
+    ?>
+    <main id="main-content">
+        <section class="content-section" aria-labelledby="about-title">
+            <h1 id="about-title">Iwwer eis</h1>
+            <p>to-do</p>
+        </section>
+    </main>
+    <?php
+    include SOURCE_DIR . '/templates/static-footer.php';
+    $html = ob_get_clean();
+
+    // Create directory structure
+    $aboutDir = BUILD_DIR . '/about';
+    if (!file_exists($aboutDir)) {
+        mkdir($aboutDir, 0755, true);
+    }
+
+    file_put_contents($aboutDir . '/index.html', $html);
 }
 
 /**

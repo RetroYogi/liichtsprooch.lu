@@ -100,6 +100,7 @@
                         <?php endforeach; ?>
                     </ul>
                 </li>
+                <li><a href="/about/" <?php echo ($currentPage ?? '') === 'about' ? 'class="active"' : ''; ?>>Iwwer eis</a></li>
             </ul>
         </div>
     </nav>
