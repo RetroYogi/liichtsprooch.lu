@@ -226,14 +226,7 @@ function generateAboutPage() {
 
     ob_start();
     include SOURCE_DIR . '/header.php';
-    ?>
-    <main id="main-content">
-        <section class="content-section" aria-labelledby="about-title">
-            <h1 id="about-title">Iwwer eis</h1>
-            <p>to-do</p>
-        </section>
-    </main>
-    <?php
+    include SOURCE_DIR . '/templates/about-content.php';
     include SOURCE_DIR . '/footer.php';
     $html = ob_get_clean();
 
