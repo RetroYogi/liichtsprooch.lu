@@ -15,7 +15,7 @@ Deploy this static site to GitHub Pages in 5 steps.
 ## Step 1: Push to GitHub
 
 ```bash
-cd "liichtsprooch.lu website new"
+cd "liichtsprooch.lu"
 
 # Initialize Git
 git init
@@ -39,7 +39,7 @@ git push -u origin main
    - Folder: `/docs`
    - Click **Save**
 
-Your site will be at: `https://USERNAME.github.io/liichtsprooch/`
+Your site will be at: `https://retroyogi.github.io/liichtsprooch/`
 
 Wait 1-2 minutes for first deployment.
 

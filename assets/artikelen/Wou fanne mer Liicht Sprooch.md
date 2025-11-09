@@ -34,7 +34,7 @@ Op Guichet.lu fannt Dir Texter haaptsächlech an:
 
 **Zil vu Guichet.lu**
 
-D'Zil vum Digitalisatiounsministère an vum CTIE ass et, jidderengem z'erméiglechen säin administrativ Prozedure selwer ze maachen. Dëst ass en neie wichtege Schrëtt Richtung digital Inclusioun vun alle Bierger fir hir Alldag ze vereinfachen - an domat hir sozial a wirtschaftlech Inclusioun ze fërderen.
+D'Zil vum Digitalisatiounsministère an vum CTIE ass et, jidderengem z'erméigleche seng administrativ Prozedure selwer ze maachen. Dëst ass en neie wichtege Schrëtt a Richtung digital Inklusioun vun alle Bierger fir hir Alldag ze vereinfachen - an domat hir sozial a wirtschaftlech Inklusioun ze fërderen.
 
 ### Infocrise.lu - Wichteg Informatiounen am Noutfall
 

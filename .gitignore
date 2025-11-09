@@ -39,3 +39,6 @@ Temporary Items
 *.bak
 *.backup
 *-old.*
+
+NEXT_STEPS.txt
+DEPLOY.md

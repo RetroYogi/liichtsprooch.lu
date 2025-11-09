@@ -17,7 +17,7 @@ TO DEPLOY:
 
 1. Push to GitHub:
    
-   cd "liichtsprooch.lu website new"
+   cd "liichtsprooch.lu"
    git init
    git add .
    git commit -m "Initial commit"
