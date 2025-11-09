@@ -45,7 +45,13 @@ liichtsprooch/
 ├── Source Files (edit these):
 │   ├── config.php              # Article metadata
 │   ├── build.php               # Static site generator
-│   ├── templates/              # HTML templates
+│   ├── header.php              # Shared header (dynamic + static)
+│   ├── footer.php              # Shared footer (dynamic + static)
+│   ├── about.php               # About page
+│   ├── templates/              # Page content templates
+│   │   ├── homepage-content.php
+│   │   ├── article-content.php
+│   │   └── rss-feed.php
 │   └── assets/
 │       ├── styles.css          # Styles
 │       └── artikelen/          # Markdown articles
@@ -53,6 +59,7 @@ liichtsprooch/
 └── Generated Files (auto-created):
     └── docs/                   # GitHub Pages serves this
         ├── index.html
+        ├── about/index.html
         ├── artikel/
         │   └── slug/index.html
         ├── assets/
@@ -67,6 +74,19 @@ Edit markdown → Push to GitHub → GitHub Actions runs build.php → Deploys
 ```
 
 **Nobody needs to run `php build.php` manually.** GitHub Actions does it automatically.
+
+### Template System
+
+The site uses **unified templates** that work for both dynamic PHP and static HTML:
+
+- `header.php` and `footer.php` auto-detect context (BUILD_DIR constant)
+- URLs automatically adjust:
+  - **Dynamic PHP**: `/index.php`, `/about.php`, `/artikel/slug`
+  - **Static HTML**: `/`, `/about/`, `/artikel/slug/`
+- **Single source of truth** - Edit once, works everywhere
+- Changes to navigation/footer automatically update both versions
+
+**Why?** No duplicate templates = no confusion, guaranteed consistency.
 
 ---
 
@@ -85,11 +105,10 @@ Edit markdown → Push to GitHub → GitHub Actions runs build.php → Deploys
 
 ## Documentation
 
-- **[HOW_TO_EDIT.md](HOW_TO_EDIT.md)** - How to add/edit articles (start here!)
-- **[DEPLOY.md](DEPLOY.md)** - Deployment guide for GitHub Pages
+- **[START_HERE.md](START_HERE.md)** - Quick overview (start here!)
+- **[HOW_TO_EDIT.md](HOW_TO_EDIT.md)** - How to add/edit articles
 - **[HTML_EMBEDS.md](HTML_EMBEDS.md)** - Embed videos, tables in articles
 - **[SECURITY.md](SECURITY.md)** - Security features
-- **[NEXT_STEPS.txt](NEXT_STEPS.txt)** - Quick deployment steps
 
 ---
 
@@ -114,15 +133,13 @@ Edit markdown → Push to GitHub → GitHub Actions runs build.php → Deploys
 
 ## Deployment
 
-See **[NEXT_STEPS.txt](NEXT_STEPS.txt)** for complete instructions.
-
-**Quick version:**
+**Quick Setup:**
 1. Push to GitHub
-2. Enable GitHub Pages (serve from `/docs`)
-3. Enable GitHub Actions (write permissions)
+2. Go to Settings → Pages → Source: Deploy from a branch → Branch: `main` → Folder: `/docs`
+3. Go to Settings → Actions → General → Workflow permissions: Read and write permissions
 4. Done!
 
-Updates deploy automatically in 2 minutes.
+Updates deploy automatically in 2 minutes after each push to `main`.
 
 ---
 

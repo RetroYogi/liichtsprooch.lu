@@ -19,8 +19,8 @@ A static website about Easy Language (Liicht Sprooch) in Luxembourg.
 ### Add or edit an article
 → Read **[HOW_TO_EDIT.md](HOW_TO_EDIT.md)**
 
-### Deploy to GitHub Pages  
-→ Read **[NEXT_STEPS.txt](NEXT_STEPS.txt)** or **[DEPLOY.md](DEPLOY.md)**
+### Deploy to GitHub Pages
+→ Read **[README.md](README.md)** - Deployment section
 
 ### Understand the project
 → Read **[README.md](README.md)**
@@ -53,6 +53,8 @@ A static website about Easy Language (Liicht Sprooch) in Luxembourg.
 |------|---------|
 | `assets/artikelen/` | Markdown articles (edit these!) |
 | `config.php` | Article metadata |
+| `header.php` | Navigation (works for dynamic + static) |
+| `footer.php` | Footer (works for dynamic + static) |
 | `build.php` | Static site generator |
 | `docs/` | Generated site (auto-created) |
 | `.github/workflows/` | GitHub Actions (auto-build) |
