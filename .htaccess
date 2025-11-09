@@ -1,0 +1,104 @@
+# Security Headers
+<IfModule mod_headers.c>
+    # Prevent clickjacking attacks
+    Header always set X-Frame-Options "SAMEORIGIN"
+
+    # Prevent MIME type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Enable XSS protection in older browsers
+    Header always set X-XSS-Protection "1; mode=block"
+
+    # Referrer policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Remove server information
+    Header unset X-Powered-By
+    Header unset Server
+
+    # Content Security Policy (adjust as needed)
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://player.vimeo.com https://vimeo.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src https://player.vimeo.com; connect-src 'self' https://player.vimeo.com;"
+
+    # Permissions Policy
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# Disable directory browsing
+Options -Indexes
+
+# Prevent access to sensitive files
+<FilesMatch "^(\.htaccess|\.htpasswd|\.git|config\.php|\.env)$">
+    Require all denied
+</FilesMatch>
+
+# Prevent access to markdown source files (optional - remove if you want them accessible)
+<FilesMatch "\.md$">
+    Require all denied
+</FilesMatch>
+
+# PHP Security Settings
+<IfModule mod_php.c>
+    php_flag display_errors Off
+    php_flag log_errors On
+    php_flag expose_php Off
+    php_value session.cookie_httponly 1
+    php_value session.cookie_secure 1
+    php_value session.cookie_samesite Strict
+</IfModule>
+
+# Enable GZIP compression for better performance
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/xml application/rss+xml
+</IfModule>
+
+# Browser caching for static assets
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType application/pdf "access plus 1 month"
+    ExpiresByType image/x-icon "access plus 1 year"
+</IfModule>
+
+# Protect against SQL injection attempts (even though no database is used)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Block common SQL injection patterns
+    RewriteCond %{QUERY_STRING} (union|select|insert|drop|update|delete|concat|declare|exec|script) [NC]
+    RewriteRule .* - [F,L]
+
+    # Block common path traversal attempts
+    RewriteCond %{QUERY_STRING} (\.\./|\.\.\\|%2e%2e) [NC]
+    RewriteRule .* - [F,L]
+
+    # Block base64 encoded strings in URLs
+    RewriteCond %{QUERY_STRING} base64_encode.*\(.*\) [NC,OR]
+    RewriteCond %{QUERY_STRING} base64_(en|de)code[^(]*\([^)]*\) [NC]
+    RewriteRule .* - [F,L]
+
+    # Block PHP code injection attempts
+    RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+    RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+    RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2})
+    RewriteRule .* - [F,L]
+</IfModule>
+
+# Custom error pages (optional - create these files if needed)
+# ErrorDocument 403 /error403.html
+# ErrorDocument 404 /error404.html
+# ErrorDocument 500 /error500.html
+
+# Enable rewriting
+RewriteEngine On
+
+# Make sure the base is set correctly (adjust if your .htaccess is not in the web root)
+RewriteBase /
+
+# Redirect friendly URL /artikel/something to artikel.php?a=something
+RewriteRule ^artikel/([^/]+)/?$ artikel.php?a=$1 [L,QSA]
