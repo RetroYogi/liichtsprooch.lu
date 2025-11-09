@@ -50,15 +50,31 @@ Edit markdown → Push to GitHub → GitHub Actions runs build.php → Deploys t
 
 ```
 liichtsprooch/
-├── config.php              # Article metadata & site config
-├── build.php               # Static site generator
-├── templates/              # HTML templates
-├── assets/
-│   ├── styles.css          # Styles
-│   └── artikelen/          # Markdown articles (edit these!)
-├── docs/                   # Generated static site (GitHub Pages serves this)
-└── .github/workflows/      # Auto-build configuration
+├── Source Files (edit these):
+│   ├── config.php              # Article metadata
+│   ├── build.php               # Static site generator
+│   ├── templates/              # HTML templates
+│   └── assets/
+│       ├── styles.css          # Styles
+│       └── artikelen/          # Markdown articles
+│
+└── Generated Files (auto-created):
+    └── docs/                   # GitHub Pages serves this
+        ├── index.html
+        ├── artikel/
+        │   └── slug/index.html
+        ├── assets/
+        ├── rss.xml
+        └── CNAME
 ```
+
+### How It Works
+
+```
+Edit markdown → Push to GitHub → GitHub Actions runs build.php → Deploys
+```
+
+**Nobody needs to run `php build.php` manually.** GitHub Actions does it automatically.
 
 ---
 
@@ -77,8 +93,8 @@ liichtsprooch/
 
 ## Documentation
 
-- **[START_HERE.md](START_HERE.md)** - Quick overview and navigation
-- **[COLLABORATION_INSTRUCTIONS.md](COLLABORATION_INSTRUCTIONS.md)** - How to add/edit articles
+- **[HOW_TO_EDIT.md](HOW_TO_EDIT.md)** - How to add/edit articles (start here!)
+- **[DEPLOY.md](DEPLOY.md)** - Deployment guide for GitHub Pages
 - **[HTML_EMBEDS.md](HTML_EMBEDS.md)** - Embed videos, tables in articles
 - **[SECURITY.md](SECURITY.md)** - Security features
 
@@ -103,16 +119,26 @@ liichtsprooch/
 
 ---
 
-## Contributing
+## Deployment
 
-1. Fork the repository
-2. Create a feature branch
-3. Edit markdown files in `assets/artikelen/`
-4. Update `config.php` with article metadata
-5. Push and create Pull Request
-6. GitHub Actions auto-builds on merge
+See **[NEXT_STEPS.txt](NEXT_STEPS.txt)** for complete instructions.
 
-See **[COLLABORATION_INSTRUCTIONS.md](COLLABORATION_INSTRUCTIONS.md)** for detailed instructions.
+**Quick version:**
+1. Push to GitHub
+2. Enable GitHub Pages (serve from `/docs`)
+3. Enable GitHub Actions (write permissions)
+4. Done!
+
+Updates deploy automatically in 2 minutes.
+
+---
+
+## Statistics
+
+- **Articles:** 8
+- **Categories:** 4
+- **Total size:** 2.8 MB (generated)
+- **Build time:** ~1 second
 
 ---
 

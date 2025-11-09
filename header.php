@@ -1,3 +1,13 @@
+<?php
+// Detect if we're building static site or serving dynamically
+$isStatic = defined('BUILD_DIR');
+
+// Set URL patterns based on context
+$homeUrl = $isStatic ? '/' : '/index.php';
+$aboutUrl = $isStatic ? '/about/' : '/about.php';
+$rssUrl = $isStatic ? '/rss.xml' : '/rss.php';
+$articleUrlPattern = $isStatic ? '/artikel/%s/' : '/artikel/%s';
+?>
 <!DOCTYPE html>
 <html lang="lb">
 <head>
@@ -52,7 +62,7 @@
     <link rel="stylesheet" href="/assets/styles.css">
 
     <!-- RSS Feed -->
-    <link rel="alternate" type="application/rss+xml" title="<?php echo SITE_TITLE; ?> RSS Feed" href="./rss.php">
+    <link rel="alternate" type="application/rss+xml" title="<?php echo SITE_TITLE; ?> RSS Feed" href="<?php echo $rssUrl; ?>">
 
     <!-- Matomo Tag Manager -->
     <script>
@@ -69,7 +79,7 @@
     <!-- Navigation -->
     <nav class="main-nav" role="navigation" aria-label="Haaptnavigatioun">
         <div class="nav-container">
-            <a href="/index.php" class="nav-logo">
+            <a href="<?php echo $homeUrl; ?>" class="nav-logo">
                 <img src="/assets/ls-logo.png" alt="LS Logo" class="logo-image">
                 <span class="logo-text">Liicht Sprooch</span>
             </a>
@@ -79,7 +89,7 @@
             </button>
 
             <ul class="nav-menu" id="nav-menu">
-                <li><a href="/index.php" <?php echo ($currentPage ?? '') === 'home' ? 'class="active"' : ''; ?>>Startsäit</a></li>
+                <li><a href="<?php echo $homeUrl; ?>" <?php echo ($currentPage ?? '') === 'home' ? 'class="active"' : ''; ?>>Startsäit</a></li>
                 <li class="nav-dropdown">
                     <button class="nav-dropdown-toggle" aria-expanded="false" aria-controls="dropdown-artikelen">
                         Artikelen <span class="dropdown-arrow">▼</span>
@@ -93,14 +103,14 @@
                                 $catArticles = getArticlesByCategory($cat);
                                 foreach ($catArticles as $a):
                                 ?>
-                                <li><a href="/artikel/<?php echo urlencode($a['slug']); ?>"><?php echo htmlspecialchars($a['title']); ?></a></li>
+                                <li><a href="<?php echo sprintf($articleUrlPattern, urlencode($a['slug'])); ?>"><?php echo htmlspecialchars($a['title']); ?></a></li>
                                 <?php endforeach; ?>
                             </ul>
                         </li>
                         <?php endforeach; ?>
                     </ul>
                 </li>
-                <li><a href="/about.php" <?php echo ($currentPage ?? '') === 'about' ? 'class="active"' : ''; ?>>Iwwer eis</a></li>
+                <li><a href="<?php echo $aboutUrl; ?>" <?php echo ($currentPage ?? '') === 'about' ? 'class="active"' : ''; ?>>Iwwer eis</a></li>
             </ul>
         </div>
     </nav>

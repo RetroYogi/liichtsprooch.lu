@@ -8,6 +8,8 @@ on:
       - 'config.php'
       - 'build.php'
       - 'templates/**'
+      - 'header.php'
+      - 'footer.php'
       - 'assets/styles.css'
   pull_request:
     branches: [ main ]

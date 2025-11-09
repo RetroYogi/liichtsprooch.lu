@@ -17,7 +17,10 @@ A static website about Easy Language (Liicht Sprooch) in Luxembourg.
 ## I want to...
 
 ### Add or edit an article
-→ **[COLLABORATION_INSTRUCTIONS.md](COLLABORATION_INSTRUCTIONS.md)** - Step-by-step guide
+→ Read **[HOW_TO_EDIT.md](HOW_TO_EDIT.md)**
+
+### Deploy to GitHub Pages  
+→ Read **[NEXT_STEPS.txt](NEXT_STEPS.txt)** or **[DEPLOY.md](DEPLOY.md)**
 
 ### Understand the project
 → **[README.md](README.md)** - Project overview, features, technologies
@@ -26,7 +29,33 @@ A static website about Easy Language (Liicht Sprooch) in Luxembourg.
 → **[HTML_EMBEDS.md](HTML_EMBEDS.md)** - How to safely embed HTML content
 
 ### Security information
-→ **[SECURITY.md](SECURITY.md)** - Security features and best practices
+→ Read **[SECURITY.md](SECURITY.md)**
+
+---
+
+## Quick Overview
+
+**For Content Editors:**
+- Edit markdown files on GitHub.com
+- No software installation needed
+- Changes auto-deploy in 2 minutes
+
+**For Developers:**
+- Clone repository
+- Run `php build.php` to generate static site
+- Push to GitHub - auto-deploys
+
+---
+
+## Files You Need to Know
+
+| File | Purpose |
+|------|---------|
+| `assets/artikelen/` | Markdown articles (edit these!) |
+| `config.php` | Article metadata |
+| `build.php` | Static site generator |
+| `docs/` | Generated site (auto-created) |
+| `.github/workflows/` | GitHub Actions (auto-build) |
 
 ---
 

@@ -87,9 +87,9 @@ function generateHomepage() {
     $ogType = 'website';
 
     ob_start();
-    include SOURCE_DIR . '/templates/static-header.php';
+    include SOURCE_DIR . '/header.php';
     include SOURCE_DIR . '/templates/homepage-content.php';
-    include SOURCE_DIR . '/templates/static-footer.php';
+    include SOURCE_DIR . '/footer.php';
     $html = ob_get_clean();
 
     // Write to build directory
@@ -160,9 +160,9 @@ function generateArticlePage($article) {
 
     // Generate HTML
     ob_start();
-    include SOURCE_DIR . '/templates/static-header.php';
+    include SOURCE_DIR . '/header.php';
     include SOURCE_DIR . '/templates/article-content.php';
-    include SOURCE_DIR . '/templates/static-footer.php';
+    include SOURCE_DIR . '/footer.php';
     $html = ob_get_clean();
 
     // Create directory structure
@@ -197,7 +197,7 @@ function generate404Page() {
     $metaDescription = 'Déi gefrot Säit gouf net fonnt.';
 
     ob_start();
-    include SOURCE_DIR . '/templates/static-header.php';
+    include SOURCE_DIR . '/header.php';
     ?>
     <main id="main-content">
         <section class="content-section" style="text-align: center; padding: 4rem 1rem;">
@@ -207,7 +207,7 @@ function generate404Page() {
         </section>
     </main>
     <?php
-    include SOURCE_DIR . '/templates/static-footer.php';
+    include SOURCE_DIR . '/footer.php';
     $html = ob_get_clean();
 
     file_put_contents(BUILD_DIR . '/404.html', $html);
@@ -225,7 +225,7 @@ function generateAboutPage() {
     $ogType = 'website';
 
     ob_start();
-    include SOURCE_DIR . '/templates/static-header.php';
+    include SOURCE_DIR . '/header.php';
     ?>
     <main id="main-content">
         <section class="content-section" aria-labelledby="about-title">
@@ -234,7 +234,7 @@ function generateAboutPage() {
         </section>
     </main>
     <?php
-    include SOURCE_DIR . '/templates/static-footer.php';
+    include SOURCE_DIR . '/footer.php';
     $html = ob_get_clean();
 
     // Create directory structure
