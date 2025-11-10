@@ -53,27 +53,29 @@ Die COPAS zählt 58 Mitglieder, die nahezu alle Wohneinrichtungen für ältere M
 Diese Einrichtungen beschäftigen mehr als 13.000 Mitarbeiter in der Betreuung pflegebedürftiger Menschen."
 
 **A Liichter Sprooch:**
-"Die COPAS ist ein Dach-Verband.
-Ein Dach-Verband ist wie ein Verein oder eine Gruppe.
-Hier ist es eine Gruppe von Firmen.
+"Die COPAS ist ein Dach-Verband.  
+Ein Dach-Verband ist wie ein Verein oder eine Gruppe.  
+Hier ist es eine Gruppe von Firmen.  
 
-Diese Firmen bieten Hilfs- und Pflege-Dienste in Luxemburg an.
-Wir schreiben hier für all diese Dienste: Hilfs-Dienste.
-Die Dienste unterstützen Menschen, die Hilfe brauchen.
-Zum Beispiel: alte Menschen, kranke Menschen, Menschen mit einer Behinderung.
+Diese Firmen bieten Hilfs- und Pflege-Dienste in Luxemburg an.  
+Wir schreiben hier für all diese Dienste: Hilfs-Dienste.  
+Die Dienste unterstützen Menschen, die Hilfe brauchen.  
+Zum Beispiel: alte Menschen, kranke Menschen, Menschen mit einer Behinderung.  
 
-Die COPAS ist der Dach-Verband für diese Hilfs- und Pflege-Dienste. Wir sagen für diese Dienste auch: Firma (Firmen), Betrieb.
+Die COPAS ist der Dach-Verband für diese Hilfs- und Pflege-Dienste.  
+Wir sagen für diese Dienste auch: Firma (Firmen), Betrieb.  
 
-Zu der COPAS gehören 58 Firmen:
-Die Firmen sind Mitglied oder „Member“ in der COPAS.
-In den Firmen arbeiten mehr als 13 000 Menschen (13 Tausend).
+Zu der COPAS gehören 58 Firmen:  
+Die Firmen sind Mitglied oder „Member“ in der COPAS.  
+In den Firmen arbeiten mehr als 13 000 Menschen (13 Tausend).  
 
-Zu den Mitgliedern der COPAS gehören:
+Zu den Mitgliedern der COPAS gehören:  
 
-Wohnstrukturen für ältere Menschen
-Einrichtungen für Menschen mit einer Behinderung
-Einrichtungen für Menschen mit einer psychischen Erkrankung
-ambulante Hilfs- und Pflege-Dienste:  diese Dienste fahren zu den Menschen nach Hause.  Sie helfen zum Beispiel beim Waschen oder Anziehen."
+Wohnstrukturen für ältere Menschen  
+Einrichtungen für Menschen mit einer Behinderung  
+Einrichtungen für Menschen mit einer psychischen Erkrankung  
+ambulante Hilfs- und Pflege-Dienste:  diese Dienste fahren zu den Menschen nach Hause.  
+Sie helfen zum Beispiel beim Waschen oder Anziehen."
 
 ### Wéi vill Zäit brauch een?
 
