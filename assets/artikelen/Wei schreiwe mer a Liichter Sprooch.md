@@ -10,7 +10,7 @@ Mir weisen Iech wéi et funktionéiert!
 
 Liicht Sprooch baséiert op engem Set u Reegele vun der europäescher Organisatioun Inclusion Europe. Dës Reegele goufe fir all Sprooch ugepasst. Zu Lëtzebuerg gëllen déi däitsch Reegelen ("Leichte Sprache") an déi franséisch Reegelen (FALC - Facile à lire et à comprendre).
 
-### D'wichtegst Reegelen am Iwwerbléck
+### Déi wichtegst Reegelen am Iwwerbléck
 
 **1. Wierder a Vocabulaire**
 - Einfach Wierder benotzen
@@ -43,17 +43,37 @@ Niewent dem Text ass et ganz wichteg de Dokument gutt ze strukturéieren, bedeit
 
 ### E konkret Beispill
 
-Huele mer e klassesche Verwaltungstext:
+Huele mer déi Däitsch Leichte Sprache
 
 **Original:**
-"La COPAS représente les prestataires qui offrent des services d'aide et de soins aux personnes âgées, malades, souffrant de troubles mentaux ou en situation d'handicap, que ce soit à domicile ou en institution, au Luxembourg."
+"Die COPAS vertritt die Pflegedienstleister in Luxemburg, die im Bereich der Betreuung und Pflege von älteren und kranken Menschen tätig sind oder in der Betreuung von Menschen mit psychischen Erkrankungen und einer Behinderung.
+
+Die COPAS zählt 58 Mitglieder, die nahezu alle Wohneinrichtungen für ältere Menschen, Tagesstätten für ältere Menschen, Betreuungsstätten für Menschen mit einer Behinderung, ambulante Pflegedienste und Strukturen für Menschen mit psychiatrischen Erkrankungen im Großherzogtum umfassen.
+
+Diese Einrichtungen beschäftigen mehr als 13.000 Mitarbeiter in der Betreuung pflegebedürftiger Menschen."
 
 **A Liichter Sprooch:**
-"La COPAS ass de Daachverband vu Prestataires vu Servicer d'Aide a vu Soins zu Lëtzebuerg.
-En Daachverband ass wéi e Grupp oder e Club.
-Hei ass et e Grupp vu Firmen.
-E Prestataire d'Aide a Soins hëlleft Leit, déi Hëllef brauchen.
-De Prestataire hëlleft eeler Leit, Leit mat Behënnerung oder krank Leit."
+"Die COPAS ist ein Dach-Verband.
+Ein Dach-Verband ist wie ein Verein oder eine Gruppe.
+Hier ist es eine Gruppe von Firmen.
+
+Diese Firmen bieten Hilfs- und Pflege-Dienste in Luxemburg an.
+Wir schreiben hier für all diese Dienste: Hilfs-Dienste.
+Die Dienste unterstützen Menschen, die Hilfe brauchen.
+Zum Beispiel: alte Menschen, kranke Menschen, Menschen mit einer Behinderung.
+
+Die COPAS ist der Dach-Verband für diese Hilfs- und Pflege-Dienste. Wir sagen für diese Dienste auch: Firma (Firmen), Betrieb.
+
+Zu der COPAS gehören 58 Firmen:
+Die Firmen sind Mitglied oder „Member“ in der COPAS.
+In den Firmen arbeiten mehr als 13 000 Menschen (13 Tausend).
+
+Zu den Mitgliedern der COPAS gehören:
+
+Wohnstrukturen für ältere Menschen
+Einrichtungen für Menschen mit einer Behinderung
+Einrichtungen für Menschen mit einer psychischen Erkrankung
+ambulante Hilfs- und Pflege-Dienste:  diese Dienste fahren zu den Menschen nach Hause.  Sie helfen zum Beispiel beim Waschen oder Anziehen."
 
 ### Wéi vill Zäit brauch een?
 
@@ -73,7 +93,7 @@ D'Préifer vum Workshop Isie liesen haaptsächlech Texter op Däitsch a Liichter
 
 E Sproochniveau B2-C1 (normal Verwaltungstexter) ass vill ze schwéier fir vill Leit. Liicht Sprooch entsprécht engem Niveau A1, also dem Niveau vun engem elementare Benotzer. Dëst erlaabt et Persoune mat intellektueller Beanträchtegung d'Informatioun ze verstoen - awer och Leit déi net gutt Däitsch oder Franséisch kënnen.
 
-**Tipp:** Wann Dir ufänkt mat Liichter Sprooch, mécht eng Formatioun bei Klaro! Si bidde reegelméisseg Coursen un um INAP, UFEP an IFEN un.
+**Tipp:** Wann Dir mat Liichter Sprooch ufänke wëllt, kënnt Dir eng Formatioun bei Klar maachen. Si bidde reegelméisseg Coursen un um INAP, UFEP an IFEN un.
 
 **Quellen:**
 - [COMED (2020): "Le langage facile, ce n'est pas si simple"](https://www.comed.lu/le-langage-facile-ce-nest-pas-si-simple)
