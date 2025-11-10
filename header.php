@@ -9,7 +9,7 @@ $rssUrl = $isStatic ? '/rss.xml' : '/rss.php';
 $articleUrlPattern = $isStatic ? '/artikel/%s/' : '/artikel/%s';
 ?>
 <!DOCTYPE html>
-<html lang="lb">
+<html lang="lb-LU">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
