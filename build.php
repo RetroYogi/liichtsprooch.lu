@@ -57,6 +57,10 @@ echo "✓ Generated 404 page\n";
 generateAboutPage();
 echo "✓ Generated About page\n";
 
+// Generate XML sitemap
+generateSitemap();
+echo "✓ Generated XML sitemap (sitemap.xml)\n";
+
 // Copy CNAME file if it exists
 if (file_exists(SOURCE_DIR . '/CNAME')) {
     copy(SOURCE_DIR . '/CNAME', BUILD_DIR . '/CNAME');
@@ -159,6 +163,7 @@ function generateArticlePage($article) {
     $articleAuthor = $article['author'];
     $articleDate = $article['date'];
     $articleCategory = $article['category'];
+    $articleImage = $article['image'] ?? '/assets/ls-logo.png';
     $readingTimeMinutes = $article['reading_time_minutes'] ?? null;
 
     // Generate HTML
@@ -243,6 +248,46 @@ function generateAboutPage() {
     }
 
     file_put_contents($aboutDir . '/index.html', $html);
+}
+
+/**
+ * Generate XML sitemap
+ */
+function generateSitemap() {
+    $articles = getAllArticles();
+
+    $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+    $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
+
+    // Homepage
+    $xml .= "  <url>\n";
+    $xml .= "    <loc>" . htmlspecialchars(SITE_URL) . "/</loc>\n";
+    $xml .= "    <lastmod>" . date('c') . "</lastmod>\n";
+    $xml .= "    <changefreq>weekly</changefreq>\n";
+    $xml .= "    <priority>1.0</priority>\n";
+    $xml .= "  </url>\n";
+
+    // About page
+    $xml .= "  <url>\n";
+    $xml .= "    <loc>" . htmlspecialchars(SITE_URL) . "/about/</loc>\n";
+    $xml .= "    <lastmod>" . date('c') . "</lastmod>\n";
+    $xml .= "    <changefreq>monthly</changefreq>\n";
+    $xml .= "    <priority>0.8</priority>\n";
+    $xml .= "  </url>\n";
+
+    // Articles
+    foreach ($articles as $article) {
+        $xml .= "  <url>\n";
+        $xml .= "    <loc>" . htmlspecialchars(SITE_URL . '/artikel/' . $article['slug']) . "/</loc>\n";
+        $xml .= "    <lastmod>" . htmlspecialchars(formatDateISO8601($article['date'])) . "</lastmod>\n";
+        $xml .= "    <changefreq>monthly</changefreq>\n";
+        $xml .= "    <priority>0.9</priority>\n";
+        $xml .= "  </url>\n";
+    }
+
+    $xml .= '</urlset>';
+
+    file_put_contents(BUILD_DIR . '/sitemap.xml', $xml);
 }
 
 /**
