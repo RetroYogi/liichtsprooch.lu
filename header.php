@@ -14,6 +14,7 @@ $articleUrlPattern = $isStatic ? '/artikel/%s/' : '/artikel/%s';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<?php echo htmlspecialchars($metaDescription ?? SITE_DESCRIPTION); ?>">
+    <meta name="keywords" content="<?php echo htmlspecialchars($metaKeywords ?? SITE_KEYWORDS); ?>">
     <meta name="robots" content="<?php echo $robots ?? 'index, follow'; ?>">
     <?php if (isset($articleAuthor)): ?>
     <meta name="author" content="<?php echo htmlspecialchars($articleAuthor); ?>">
@@ -63,6 +64,63 @@ $articleUrlPattern = $isStatic ? '/artikel/%s/' : '/artikel/%s';
 
     <!-- RSS Feed -->
     <link rel="alternate" type="application/rss+xml" title="<?php echo SITE_TITLE; ?> RSS Feed" href="<?php echo $rssUrl; ?>">
+
+    <!-- JSON-LD Schema for SEO -->
+    <script type="application/ld+json">
+    <?php
+    if (($ogType ?? 'website') === 'article' && isset($articleDate)) {
+        // Article schema for individual article pages
+        $schema = [
+            "@context" => "https://schema.org",
+            "@type" => "NewsArticle",
+            "headline" => $pageTitle ?? SITE_TITLE,
+            "description" => $metaDescription ?? SITE_DESCRIPTION,
+            "datePublished" => $articleDate,
+            "dateModified" => $articleDate,
+            "author" => [
+                "@type" => "Organization",
+                "name" => $articleAuthor ?? "Liicht Sprooch Team"
+            ],
+            "publisher" => [
+                "@type" => "Organization",
+                "name" => SITE_TITLE,
+                "url" => SITE_URL
+            ],
+            "inLanguage" => "lb-LU",
+            "keywords" => $metaKeywords ?? SITE_KEYWORDS
+        ];
+
+        if (isset($articleCategory)) {
+            $schema["articleSection"] = $articleCategory;
+        }
+
+        if (isset($readingTimeMinutes)) {
+            $schema["timeRequired"] = "PT" . $readingTimeMinutes . "M";
+        }
+
+        echo json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+    } else {
+        // WebSite schema for homepage and other pages
+        $schema = [
+            "@context" => "https://schema.org",
+            "@type" => "WebSite",
+            "name" => SITE_TITLE,
+            "url" => $canonicalUrl ?? SITE_URL,
+            "description" => $metaDescription ?? SITE_DESCRIPTION,
+            "inLanguage" => ["lb-LU", "de-LU", "fr-LU"],
+            "keywords" => $metaKeywords ?? SITE_KEYWORDS,
+            "about" => [
+                "@type" => "Thing",
+                "name" => "Liicht Sprooch",
+                "alternateName" => ["Leichte Sprache", "FALC", "Easy-to-Read"],
+                "description" => "Informationen über Leichte Sprache in Luxemburg"
+            ]
+        ];
+
+        echo json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+    }
+    ?>
+    </script>
 
     <!-- Matomo Tag Manager -->
     <script>

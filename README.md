@@ -88,13 +88,47 @@ Edit markdown → Push to GitHub → GitHub Actions runs build.php → Deploys
 - ✅ **WCAG 2.1 AA** - Fully accessible
 - ✅ **RSS feed** - Automatic generation
 - ✅ **No database** - File-based content
+- ✅ **SEO Optimized** - Meta descriptions, keywords, JSON-LD schema
+- ✅ **Multilingual SEO** - Luxembourgish + German search terms
+
+---
+
+## SEO & Metadata
+
+All SEO metadata is centralized in `config.php` for easy management:
+
+### Site-Wide SEO
+```php
+define('SITE_DESCRIPTION', '...');  // Main site description
+define('SITE_KEYWORDS', '...');     // Site-wide keywords
+```
+
+### Article SEO (per article in config.php)
+```php
+[
+    'title' => 'Article Title',
+    'description' => 'SEO description',
+    'keywords' => 'keyword1, keyword2, ...',
+    'reading_time_minutes' => 5,
+    // ... other fields
+]
+```
+
+### What's Included
+- **Meta tags**: Description, keywords, author, robots
+- **Open Graph**: Full Facebook/social media preview support
+- **Twitter Cards**: Rich previews for Twitter
+- **JSON-LD Schema**: NewsArticle for articles, WebSite for pages
+- **Multilingual**: Supports lb-LU, de-LU, fr-LU
+- **Reading time**: Automatic schema markup (PT5M format)
+
+See **[COLLABORATION_INSTRUCTIONS.md](COLLABORATION_INSTRUCTIONS.md)** for how to update SEO metadata.
 
 ---
 
 ## Documentation
 
-- **[HOW_TO_EDIT.md](HOW_TO_EDIT.md)** - How to add/edit articles (start here!)
-- **[DEPLOY.md](DEPLOY.md)** - Deployment guide for GitHub Pages
+- **[COLLABORATION_INSTRUCTIONS.md](COLLABORATION_INSTRUCTIONS.md)** - How to add/edit articles & SEO (start here!)
 - **[HTML_EMBEDS.md](HTML_EMBEDS.md)** - Embed videos, tables in articles
 - **[SECURITY.md](SECURITY.md)** - Security features
 

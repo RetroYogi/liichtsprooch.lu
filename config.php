@@ -7,10 +7,11 @@
 // Site configuration
 define('SITE_TITLE', 'Liicht Sprooch Info-Site');
 define('SITE_URL', 'https://liichtsprooch.lu'); // Update with your actual domain
-define('SITE_DESCRIPTION', 'Informatiounen iwwer Liicht Sprooch zu Lëtzebuerg - Facile à lire et à comprendre (FALC) - Leichte Sprache');
+define('SITE_DESCRIPTION', 'Informatiounen iwwer Liicht Sprooch zu Lëtzebuerg - Facile à lire et à comprendre (FALC) - Leichte Sprache - Easy-to-Read. Entdeckt wéi een a Liichter Sprooch schreift, wou een se fënnt, a firwat se wichteg ass fir Inclusioun. Informationen über Leichte Sprache in Luxemburg.');
+define('SITE_KEYWORDS', 'Liicht Sprooch, Leichte Sprache, FALC, Easy-to-Read, Luxemburg, Lëtzebuerg, Inklusion, Barrierefreiheit, Inclusion, Accessibilité, Klaro, Atelier Isie, einfache Sprache');
 
 // Articles configuration
-// Each article has: slug, title, description (for SEO), category, date, markdown_file
+// Each article has: slug, title, description (for SEO), category, date, markdown_file, author, keywords, reading_time_minutes
 $articles = [
     [
         'slug' => 'klaro-am-detail',
@@ -19,7 +20,9 @@ $articles = [
         'category' => 'Organisatiounen',
         'date' => '2025-01-15',
         'markdown_file' => '/assets/artikelen/Klaro am Detail.md',
-        'author' => 'Liicht Sprooch Team'
+        'author' => 'Liicht Sprooch Team',
+        'keywords' => 'Klaro, Kompetenzzentrum, Liicht Sprooch, Lëtzebuerg, Inclusion, Leichte Sprache Luxemburg, Kompetenzzentrum Leichte Sprache, FALC, Barrierefreiheit',
+        'reading_time_minutes' => 5
     ],
     [
         'slug' => 'wei-schreiwe-mer-a-liichter-sprooch',
@@ -28,7 +31,9 @@ $articles = [
         'category' => 'Reegelen & Praxis',
         'date' => '2025-11-09',
         'markdown_file' => '/assets/artikelen/Wei schreiwe mer a Liichter Sprooch.md',
-        'author' => 'Liicht Sprooch Team'
+        'author' => 'Liicht Sprooch Team',
+        'keywords' => 'Liicht Sprooch schreiwen, Leichte Sprache schreiben, FALC Regeln, Easy-to-Read, Validatioun, Texter a Liichter Sprooch, Anleitung Leichte Sprache, Regeln, Praxis',
+        'reading_time_minutes' => 8
     ],
     [
         'slug' => 'atelier-isie',
@@ -37,7 +42,9 @@ $articles = [
         'category' => 'Organisatiounen',
         'date' => '2025-01-13',
         'markdown_file' => '/assets/artikelen/Atelier Isie.md',
-        'author' => 'Liicht Sprooch Team'
+        'author' => 'Liicht Sprooch Team',
+        'keywords' => 'Atelier Isie, Validatioun, intellektuell Beanträchtegung, Liicht Sprooch, Prüfgruppe, Validierung Leichte Sprache, Experten, Inklusion, Barrierefreiheit',
+        'reading_time_minutes' => 4
     ],
     [
         'slug' => 'falc-vs-leichte-sprache-vs-liicht-sprooch',
@@ -46,7 +53,9 @@ $articles = [
         'category' => 'Reegelen & Praxis',
         'date' => '2025-01-12',
         'markdown_file' => '/assets/artikelen/FALC vs Leichte Sprache vs Liicht Sprooch.md',
-        'author' => 'Liicht Sprooch Team'
+        'author' => 'Liicht Sprooch Team',
+        'keywords' => 'FALC, Leichte Sprache, Liicht Sprooch, Easy-to-Read, Méisproochegkeet, Mehrsprachigkeit Luxemburg, Unterschiede, Vergleich, Lëtzebuerg',
+        'reading_time_minutes' => 6
     ],
     [
         'slug' => 'wou-fanne-mer-liicht-sprooch',
@@ -55,7 +64,9 @@ $articles = [
         'category' => 'Ressourcen',
         'date' => '2025-01-11',
         'markdown_file' => '/assets/artikelen/Wou fanne mer Liicht Sprooch.md',
-        'author' => 'Liicht Sprooch Team'
+        'author' => 'Liicht Sprooch Team',
+        'keywords' => 'Liicht Sprooch Beispiller, Guichet.lu, Infocrise, ZPB, Ressourcen, Leichte Sprache Luxemburg finden, Beispiele, Mediation Scolaire, Lëtzebuerg',
+        'reading_time_minutes' => 5
     ],
     [
         'slug' => 'accessilingua',
@@ -64,7 +75,9 @@ $articles = [
         'category' => 'Technologie',
         'date' => '2025-01-10',
         'markdown_file' => '/assets/artikelen/Accessilingua.md',
-        'author' => 'Liicht Sprooch Team'
+        'author' => 'Liicht Sprooch Team',
+        'keywords' => 'Accessilingua, AI, Kënschtlech Intelligenz, Künstliche Intelligenz, Liicht Sprooch, Technologie, Automation, Leichte Sprache Software, KI',
+        'reading_time_minutes' => 6
     ],
     [
         'slug' => 'den-cdi',
@@ -73,7 +86,9 @@ $articles = [
         'category' => 'Organisatiounen',
         'date' => '2025-01-09',
         'markdown_file' => '/assets/artikelen/Den CDI.md',
-        'author' => 'Liicht Sprooch Team'
+        'author' => 'Liicht Sprooch Team',
+        'keywords' => 'CDI, Service Leichte Sprache, Bildung, Liicht Sprooch, Lëtzebuerg, Bildungsbereich, Leichte Sprache Bildung, Organisatiounen',
+        'reading_time_minutes' => 4
     ],
     [
         'slug' => 'den-easy-to-read-logo',
@@ -82,7 +97,9 @@ $articles = [
         'category' => 'Reegelen & Praxis',
         'date' => '2025-01-08',
         'markdown_file' => '/assets/artikelen/Den Easy-to-Read Logo.md',
-        'author' => 'Liicht Sprooch Team'
+        'author' => 'Liicht Sprooch Team',
+        'keywords' => 'Easy-to-Read Logo, Inclusion Europe, Validatioun, Qualitéit, Zertifizierung, FALC, Liicht Sprooch, Logo beantragen, Gütesiegel',
+        'reading_time_minutes' => 5
     ]
 ];
 
