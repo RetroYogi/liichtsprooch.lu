@@ -14,18 +14,6 @@ define('SITE_KEYWORDS', 'Liicht Sprooch, Leichte Sprache, FALC, Easy-to-Read, Lu
 // Each article has: slug, title, description (for SEO), category, date, markdown_file, author, keywords, reading_time_minutes, image
 $articles = [
     [
-        'slug' => 'klaro-am-detail',
-        'title' => 'Klaro am Detail - Wéi d\'Kompetenzzentrum funktionéiert',
-        'description' => 'Entdeckt Klaro, den offizielle Kompetenzzentrum fir Liicht Sprooch zu Lëtzebuerg. Léiert wéi Klaro funktionéiert, wou se sinn, a firwat si esou wichteg fir Inclusioun am Land sinn.',
-        'category' => 'Organisatiounen',
-        'date' => '2025-01-15',
-        'markdown_file' => '/assets/artikelen/Klaro am Detail.md',
-        'author' => 'Liicht Sprooch Team',
-        'keywords' => 'Klaro, Kompetenzzentrum, Liicht Sprooch, Lëtzebuerg, Inclusion, Leichte Sprache Luxemburg, Kompetenzzentrum Leichte Sprache, FALC, Barrierefreiheit',
-        'reading_time_minutes' => 5,
-        'image' => '/assets/ls-logo.png'
-    ],
-    [
         'slug' => 'wei-schreiwe-mer-a-liichter-sprooch',
         'title' => 'Wéi schreiwe mer a Liichter Sprooch? Eng praktesch Uleedung',
         'description' => 'Eng komplett Uleedung fir Texter a Liichter Sprooch ze schreiwen. Léiert déi wichtegst Reegelen, Beispiller aus der Praxis, a wéi een Texter validéiert kritt.',
@@ -38,11 +26,35 @@ $articles = [
         'image' => '/assets/ls-logo.png'
     ],
     [
+        'slug' => 'projet-starter-pack',
+        'title' => 'Projet Starter Pack - D\'APEMH gewënnt de Prix de l\'inclusion numérique',
+        'description' => 'D\'APEMH gewënnt de Prix de l\'inclusion numérique fir hire Projet Starter Pack - eng innovativ Basis-Formatioun fir digital Kompetenzen a Liichter Sprooch op Lëtzebuergesch. Entdeckt wéi digital Inklusioun a Liicht Sprooch zesummeschaffen.',
+        'category' => 'Organisatiounen',
+        'date' => '2025-05-27',
+        'markdown_file' => '/assets/artikelen/Projet_Starter_Pack.md',
+        'author' => 'Liicht Sprooch Team',
+        'keywords' => 'Projet Starter Pack, APEMH, Prix inclusion numérique, digital Inklusioun, Liicht Sprooch Lëtzebuergesch, Léierplattform, digitale Kompetenze, Formatioun, lern-plattform.lu, Barrierefreiheit',
+        'reading_time_minutes' => 6,
+        'image' => '/assets/ls-logo.png'
+    ],
+    [
+        'slug' => 'klaro-am-detail',
+        'title' => 'Klaro am Detail - Wéi d\'Kompetenzzentrum funktionéiert',
+        'description' => 'Entdeckt Klaro, den offizielle Kompetenzzentrum fir Liicht Sprooch zu Lëtzebuerg. Léiert wéi Klaro funktionéiert, wou se sinn, a firwat si esou wichteg fir Inclusioun am Land sinn.',
+        'category' => 'Organisatiounen',
+        'date' => '2025-05-02',
+        'markdown_file' => '/assets/artikelen/Klaro am Detail.md',
+        'author' => 'Liicht Sprooch Team',
+        'keywords' => 'Klaro, Kompetenzzentrum, Liicht Sprooch, Lëtzebuerg, Inclusion, Leichte Sprache Luxemburg, Kompetenzzentrum Leichte Sprache, FALC, Barrierefreiheit',
+        'reading_time_minutes' => 5,
+        'image' => '/assets/ls-logo.png'
+    ],
+    [
         'slug' => 'atelier-isie',
         'title' => 'Atelier Isie - Experte mat intellektueller Beanträchtegung validéieren Texter',
         'description' => 'Den Atelier Isie ass e mobillen Atelier wou jonk Leit mat intellektueller Beanträchtegung Texter a Liichter Sprooch validéieren. Entdeckt hir wichteg Roll fir Qualitéit a Inclusioun.',
         'category' => 'Organisatiounen',
-        'date' => '2025-01-13',
+        'date' => '2025-05-02',
         'markdown_file' => '/assets/artikelen/Atelier Isie.md',
         'author' => 'Liicht Sprooch Team',
         'keywords' => 'Atelier Isie, Validatioun, intellektuell Beanträchtegung, Liicht Sprooch, Prüfgruppe, Validierung Leichte Sprache, Experten, Inklusion, Barrierefreiheit',
@@ -107,6 +119,18 @@ $articles = [
         'author' => 'Liicht Sprooch Team',
         'keywords' => 'Easy-to-Read Logo, Inclusion Europe, Validatioun, Qualitéit, Zertifizierung, FALC, Liicht Sprooch, Logo beantragen, Gütesiegel',
         'reading_time_minutes' => 5,
+        'image' => '/assets/ls-logo.png'
+    ],
+    [
+        'slug' => 'accessibel-walen',
+        'title' => 'Accessibel Walen fir jiddereen - Wéi Liicht Sprooch d\'Demokratie stäerkt',
+        'description' => 'Wéi mécht Lëtzebuerg Walen accessibel fir jiddereen? Entdeckt d\'Roll vun Liichter Sprooch bei Walinformatiounen, taktile Walmodeller, Transportservicer a vill méi. Demokratie braucht Accessibilitéit.',
+        'category' => 'Ressourcen',
+        'date' => '2023-10-18',
+        'markdown_file' => '/assets/artikelen/Accessibel_Walen.md',
+        'author' => 'Liicht Sprooch Team',
+        'keywords' => 'Accessibel Walen, Walrecht, Demokratie, Liicht Sprooch, Barrierefreiheit, Check Politik, ZPB, Elections, Inclusion, Adapto, UN-BRK, Walinformatiounen',
+        'reading_time_minutes' => 8,
         'image' => '/assets/ls-logo.png'
     ]
 ];
