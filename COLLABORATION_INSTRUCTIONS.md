@@ -31,7 +31,8 @@ GitHub automatically builds and deploys your changes in ~2 minutes. You never ne
        'markdown_file' => '/assets/artikelen/Your Article Title.md',
        'author' => 'Your Name',
        'keywords' => 'keyword1, keyword2, German keyword, Luxembourgish keyword',
-       'reading_time_minutes' => 5
+       'reading_time_minutes' => 5,
+       'image' => '/assets/ls-logo.png'  // Optional: defaults to site logo if not specified
    ],
    ```
 10. Click **"Commit changes"**
@@ -151,7 +152,8 @@ Each article in `config.php` should include these fields:
     'markdown_file' => '/assets/artikelen/Article.md',
     'author' => 'Author Name',
     'keywords' => 'Luxembourgish term, German term, another keyword, ...',
-    'reading_time_minutes' => 5
+    'reading_time_minutes' => 5,
+    'image' => '/assets/ls-logo.png'  // Optional: use site logo or custom image
 ]
 ```
 
@@ -169,6 +171,7 @@ Each article in `config.php` should include these fields:
 **SEO Fields:**
 - `keywords` - 5-10 relevant search terms (Luxembourgish + German)
 - `reading_time_minutes` - Estimated reading time (helps with SEO schema)
+- `image` - Social media preview image (optional, defaults to `/assets/ls-logo.png` if not specified)
 
 ---
 

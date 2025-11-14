@@ -110,6 +110,7 @@ $ogType = 'article';
 $articleAuthor = $article['author'];
 $articleDate = $article['date'];
 $articleCategory = $article['category'];
+$articleImage = $article['image'] ?? '/assets/ls-logo.png';
 
 // Get other articles from same category for "related articles"
 $relatedArticles = getArticlesByCategory($article['category']);

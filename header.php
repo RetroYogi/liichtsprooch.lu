@@ -25,8 +25,9 @@ $articleUrlPattern = $isStatic ? '/artikel/%s/' : '/artikel/%s';
     <meta property="og:title" content="<?php echo htmlspecialchars($pageTitle ?? SITE_TITLE); ?>">
     <meta property="og:description" content="<?php echo htmlspecialchars($metaDescription ?? SITE_DESCRIPTION); ?>">
     <meta property="og:url" content="<?php echo htmlspecialchars($canonicalUrl ?? SITE_URL); ?>">
+    <meta property="og:image" content="<?php echo SITE_URL . ($articleImage ?? '/assets/ls-logo.png'); ?>">
     <?php if (isset($articleDate)): ?>
-    <meta property="article:published_time" content="<?php echo $articleDate; ?>">
+    <meta property="article:published_time" content="<?php echo formatDateISO8601($articleDate); ?>">
     <?php endif; ?>
     <?php if (isset($articleAuthor)): ?>
     <meta property="article:author" content="<?php echo htmlspecialchars($articleAuthor); ?>">
@@ -39,6 +40,7 @@ $articleUrlPattern = $isStatic ? '/artikel/%s/' : '/artikel/%s';
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:title" content="<?php echo htmlspecialchars($pageTitle ?? SITE_TITLE); ?>">
     <meta property="twitter:description" content="<?php echo htmlspecialchars($metaDescription ?? SITE_DESCRIPTION); ?>">
+    <meta property="twitter:image" content="<?php echo SITE_URL . ($articleImage ?? '/assets/ls-logo.png'); ?>">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="<?php echo htmlspecialchars($canonicalUrl ?? SITE_URL); ?>">
@@ -75,8 +77,8 @@ $articleUrlPattern = $isStatic ? '/artikel/%s/' : '/artikel/%s';
             "@type" => "NewsArticle",
             "headline" => $pageTitle ?? SITE_TITLE,
             "description" => $metaDescription ?? SITE_DESCRIPTION,
-            "datePublished" => $articleDate,
-            "dateModified" => $articleDate,
+            "datePublished" => formatDateISO8601($articleDate),
+            "dateModified" => formatDateISO8601($articleDate),
             "author" => [
                 "@type" => "Organization",
                 "name" => $articleAuthor ?? "Liicht Sprooch Team"
@@ -96,6 +98,10 @@ $articleUrlPattern = $isStatic ? '/artikel/%s/' : '/artikel/%s';
 
         if (isset($readingTimeMinutes)) {
             $schema["timeRequired"] = "PT" . $readingTimeMinutes . "M";
+        }
+
+        if (isset($articleImage)) {
+            $schema["image"] = SITE_URL . $articleImage;
         }
 
         echo json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);

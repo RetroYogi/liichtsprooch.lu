@@ -65,6 +65,7 @@ liichtsprooch/
         │   └── slug/index.html
         ├── assets/
         ├── rss.xml
+        ├── sitemap.xml
         └── CNAME
 ```
 
@@ -88,8 +89,9 @@ Edit markdown → Push to GitHub → GitHub Actions runs build.php → Deploys
 - ✅ **WCAG 2.1 AA** - Fully accessible
 - ✅ **RSS feed** - Automatic generation
 - ✅ **No database** - File-based content
-- ✅ **SEO Optimized** - Meta descriptions, keywords, JSON-LD schema
+- ✅ **SEO Optimized** - Meta descriptions, keywords, JSON-LD schema, XML sitemap
 - ✅ **Multilingual SEO** - Luxembourgish + German search terms
+- ✅ **Social Media** - Open Graph and Twitter Card images for rich previews
 
 ---
 
@@ -110,17 +112,20 @@ define('SITE_KEYWORDS', '...');     // Site-wide keywords
     'description' => 'SEO description',
     'keywords' => 'keyword1, keyword2, ...',
     'reading_time_minutes' => 5,
+    'image' => '/assets/ls-logo.png',  // For social media previews
     // ... other fields
 ]
 ```
 
 ### What's Included
 - **Meta tags**: Description, keywords, author, robots
-- **Open Graph**: Full Facebook/social media preview support
-- **Twitter Cards**: Rich previews for Twitter
+- **Open Graph**: Full Facebook/social media preview support with images
+- **Twitter Cards**: Rich previews for Twitter with images
 - **JSON-LD Schema**: NewsArticle for articles, WebSite for pages
+- **XML Sitemap**: Auto-generated sitemap.xml for search engines
 - **Multilingual**: Supports lb-LU, de-LU, fr-LU
 - **Reading time**: Automatic schema markup (PT5M format)
+- **Timezone support**: ISO 8601 datetime format for published dates
 
 See **[COLLABORATION_INSTRUCTIONS.md](COLLABORATION_INSTRUCTIONS.md)** for how to update SEO metadata.
 

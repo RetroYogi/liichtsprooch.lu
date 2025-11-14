@@ -11,7 +11,7 @@ define('SITE_DESCRIPTION', 'Informatiounen iwwer Liicht Sprooch zu Lëtzebuerg -
 define('SITE_KEYWORDS', 'Liicht Sprooch, Leichte Sprache, FALC, Easy-to-Read, Luxemburg, Lëtzebuerg, Inklusion, Barrierefreiheit, Inclusion, Accessibilité, Klaro, Atelier Isie, einfache Sprache');
 
 // Articles configuration
-// Each article has: slug, title, description (for SEO), category, date, markdown_file, author, keywords, reading_time_minutes
+// Each article has: slug, title, description (for SEO), category, date, markdown_file, author, keywords, reading_time_minutes, image
 $articles = [
     [
         'slug' => 'klaro-am-detail',
@@ -22,7 +22,8 @@ $articles = [
         'markdown_file' => '/assets/artikelen/Klaro am Detail.md',
         'author' => 'Liicht Sprooch Team',
         'keywords' => 'Klaro, Kompetenzzentrum, Liicht Sprooch, Lëtzebuerg, Inclusion, Leichte Sprache Luxemburg, Kompetenzzentrum Leichte Sprache, FALC, Barrierefreiheit',
-        'reading_time_minutes' => 5
+        'reading_time_minutes' => 5,
+        'image' => '/assets/ls-logo.png'
     ],
     [
         'slug' => 'wei-schreiwe-mer-a-liichter-sprooch',
@@ -33,7 +34,8 @@ $articles = [
         'markdown_file' => '/assets/artikelen/Wei schreiwe mer a Liichter Sprooch.md',
         'author' => 'Liicht Sprooch Team',
         'keywords' => 'Liicht Sprooch schreiwen, Leichte Sprache schreiben, FALC Regeln, Easy-to-Read, Validatioun, Texter a Liichter Sprooch, Anleitung Leichte Sprache, Regeln, Praxis',
-        'reading_time_minutes' => 8
+        'reading_time_minutes' => 8,
+        'image' => '/assets/ls-logo.png'
     ],
     [
         'slug' => 'atelier-isie',
@@ -44,7 +46,8 @@ $articles = [
         'markdown_file' => '/assets/artikelen/Atelier Isie.md',
         'author' => 'Liicht Sprooch Team',
         'keywords' => 'Atelier Isie, Validatioun, intellektuell Beanträchtegung, Liicht Sprooch, Prüfgruppe, Validierung Leichte Sprache, Experten, Inklusion, Barrierefreiheit',
-        'reading_time_minutes' => 4
+        'reading_time_minutes' => 4,
+        'image' => '/assets/ls-logo.png'
     ],
     [
         'slug' => 'falc-vs-leichte-sprache-vs-liicht-sprooch',
@@ -55,7 +58,8 @@ $articles = [
         'markdown_file' => '/assets/artikelen/FALC vs Leichte Sprache vs Liicht Sprooch.md',
         'author' => 'Liicht Sprooch Team',
         'keywords' => 'FALC, Leichte Sprache, Liicht Sprooch, Easy-to-Read, Méisproochegkeet, Mehrsprachigkeit Luxemburg, Unterschiede, Vergleich, Lëtzebuerg',
-        'reading_time_minutes' => 6
+        'reading_time_minutes' => 6,
+        'image' => '/assets/ls-logo.png'
     ],
     [
         'slug' => 'wou-fanne-mer-liicht-sprooch',
@@ -66,7 +70,8 @@ $articles = [
         'markdown_file' => '/assets/artikelen/Wou fanne mer Liicht Sprooch.md',
         'author' => 'Liicht Sprooch Team',
         'keywords' => 'Liicht Sprooch Beispiller, Guichet.lu, Infocrise, ZPB, Ressourcen, Leichte Sprache Luxemburg finden, Beispiele, Mediation Scolaire, Lëtzebuerg',
-        'reading_time_minutes' => 5
+        'reading_time_minutes' => 5,
+        'image' => '/assets/ls-logo.png'
     ],
     [
         'slug' => 'accessilingua',
@@ -77,7 +82,8 @@ $articles = [
         'markdown_file' => '/assets/artikelen/Accessilingua.md',
         'author' => 'Liicht Sprooch Team',
         'keywords' => 'Accessilingua, AI, Kënschtlech Intelligenz, Künstliche Intelligenz, Liicht Sprooch, Technologie, Automation, Leichte Sprache Software, KI',
-        'reading_time_minutes' => 6
+        'reading_time_minutes' => 6,
+        'image' => '/assets/ls-logo.png'
     ],
     [
         'slug' => 'den-cdi',
@@ -88,7 +94,8 @@ $articles = [
         'markdown_file' => '/assets/artikelen/Den CDI.md',
         'author' => 'Liicht Sprooch Team',
         'keywords' => 'CDI, Service Leichte Sprache, Bildung, Liicht Sprooch, Lëtzebuerg, Bildungsbereich, Leichte Sprache Bildung, Organisatiounen',
-        'reading_time_minutes' => 4
+        'reading_time_minutes' => 4,
+        'image' => '/assets/ls-logo.png'
     ],
     [
         'slug' => 'den-easy-to-read-logo',
@@ -99,7 +106,8 @@ $articles = [
         'markdown_file' => '/assets/artikelen/Den Easy-to-Read Logo.md',
         'author' => 'Liicht Sprooch Team',
         'keywords' => 'Easy-to-Read Logo, Inclusion Europe, Validatioun, Qualitéit, Zertifizierung, FALC, Liicht Sprooch, Logo beantragen, Gütesiegel',
-        'reading_time_minutes' => 5
+        'reading_time_minutes' => 5,
+        'image' => '/assets/ls-logo.png'
     ]
 ];
 
@@ -189,4 +197,17 @@ function formatDateLB($date) {
     $year = date('Y', $timestamp);
 
     return "$day. $month $year";
+}
+
+/**
+ * Format date to ISO 8601 with Luxembourg timezone (CET/CEST)
+ * @param string $date Date in YYYY-MM-DD format
+ * @return string ISO 8601 datetime string with timezone
+ */
+function formatDateISO8601($date) {
+    // Luxembourg timezone (CET = UTC+1, CEST = UTC+2 during DST)
+    $dateTime = new DateTime($date, new DateTimeZone('Europe/Luxembourg'));
+    // Set time to noon to avoid any midnight issues
+    $dateTime->setTime(12, 0, 0);
+    return $dateTime->format('c'); // ISO 8601 format with timezone
 }
