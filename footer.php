@@ -5,8 +5,8 @@
             <p>
                 <a href="/index.php">Startsäit</a> |
                 <a href="http://github.com/RetroYogi/liichtsprooch.lu/" target="_blank">GitHub</a> |
-                <a href="/rss.php">RSS Feed</a> |
-                <a href="mailto:liichtsprooch@mailo.lu" rel="noopener">Kontakt</a>
+                <a href="<?php echo $rssUrl; ?>">RSS Feed</a> |
+                <a href="mailto:contact@key4.lu" rel="noopener">Kontakt</a>
             </p>
         </div>
     </footer>

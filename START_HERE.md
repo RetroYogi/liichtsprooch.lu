@@ -83,7 +83,7 @@ Everything happens automatically. You just edit and push.
 ## Need Help?
 
 1. Check the documentation files above
-2. Email: liichtsprooch@mailo.lu
+2. Email: contact@key4.lu
 3. Create an Issue in the repository
 
 ---
