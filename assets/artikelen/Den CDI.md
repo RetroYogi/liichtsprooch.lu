@@ -16,7 +16,7 @@ De CDI bitt Betreiung fir Kanner a Jugendlecher mat intellektueller Entwécklung
 
 De Service Leichte Sprache deen zum CDI gehéiert huet zwou Haaptzieler: Liicht Sprooch ze promouvéieren an Texter a FALC ze iwwersetzen.
 
-**D'Visio un vum CDI:**
+**D'Missioune vum CDI:**
 
 Eng vun de Missioune vum CDI ass et d'Informatioun fir jiddereen zougänglech ze maachen. Doduerch engagéiert sech de CDI FALC ze benotzen.
 
