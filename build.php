@@ -83,6 +83,7 @@ function generateHomepage() {
     $currentPage = 'home';
     $pageTitle = SITE_TITLE;
     $metaDescription = SITE_DESCRIPTION;
+    $metaKeywords = SITE_KEYWORDS;
     $canonicalUrl = SITE_URL;
     $ogType = 'website';
 
@@ -152,11 +153,13 @@ function generateArticlePage($article) {
     // Set up page variables
     $pageTitle = $article['title'] . ' | ' . SITE_TITLE;
     $metaDescription = $article['description'];
+    $metaKeywords = $article['keywords'] ?? SITE_KEYWORDS;
     $canonicalUrl = SITE_URL . '/artikel/' . $article['slug'];
     $ogType = 'article';
     $articleAuthor = $article['author'];
     $articleDate = $article['date'];
     $articleCategory = $article['category'];
+    $readingTimeMinutes = $article['reading_time_minutes'] ?? null;
 
     // Generate HTML
     ob_start();
@@ -195,6 +198,8 @@ function generate404Page() {
     global $categories;
     $pageTitle = 'Säit net fonnt | ' . SITE_TITLE;
     $metaDescription = 'Déi gefrot Säit gouf net fonnt.';
+    $metaKeywords = SITE_KEYWORDS;
+    $robots = 'noindex, nofollow';
 
     ob_start();
     include SOURCE_DIR . '/header.php';
@@ -220,7 +225,8 @@ function generateAboutPage() {
     global $categories;
     $currentPage = 'about';
     $pageTitle = 'Iwwer dës Säit - ' . SITE_TITLE;
-    $metaDescription = 'Méi iwwer Liicht Sprooch zu Lëtzebuerg';
+    $metaDescription = 'Iwwer dës Informatiounssäit zu Liichter Sprooch zu Lëtzebuerg. Entdeckt firwat Liicht Sprooch wichteg ass fir Inclusioun a wéi dës Säit entstanen ass. Über diese Informationsseite zu Leichter Sprache in Luxemburg.';
+    $metaKeywords = 'Iwwer Liicht Sprooch, About, Informatiounssäit, Leichte Sprache Luxemburg, Inclusion, Barrierefreiheit, Lëtzebuerg, Info-Site';
     $canonicalUrl = SITE_URL . '/about/';
     $ogType = 'website';
 
