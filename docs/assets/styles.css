@@ -170,6 +170,12 @@ section {
         padding: 3rem;
     }
 }
+@media (max-width: 458px) {
+    .content-section {
+        padding: 3rem;
+    }
+}
+
 
 .closing-paragraph {
     margin-top: 2rem;

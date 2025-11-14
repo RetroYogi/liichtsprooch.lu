@@ -171,6 +171,12 @@ section {
     }
 }
 
+@media (max-width: 458px) {
+    .content-section {
+        padding: 0px;
+    }
+}
+
 .closing-paragraph {
     margin-top: 2rem;
     font-weight: 500;
