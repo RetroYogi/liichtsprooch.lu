@@ -188,8 +188,8 @@ include 'header.php';
                 </article>
 
                 <article class="tool-item">
-                    <h3>Einfach Sprooch - Iwwersetzungstool</h3>
-                    <p>Dëst Online-Tool erlaabt et Iech, Texter direkt an eng méi einfach Sprooch ze iwwersetzen.</p>
+                    <h3><span lang="de-LU">Einfache Sprache</span> - Iwwersetzungstool</h3>
+                    <p>Dësen Online-Tool erlaabt et däitsch Texter direkt an eng méi einfach Sprooch z'iwwersetzen.</p>
                     <a href="https://einfachesprache.xyz/" target="_blank" rel="noopener noreferrer" class="tool-link">Tool benotzen</a>
                 </article>
 
