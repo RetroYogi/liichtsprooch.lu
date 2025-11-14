@@ -2,7 +2,13 @@
 
 ## Wann Digital Inklusioun mat Liichter Sprooch zesummekënnt
 
-De 17. Mee 2025 krut d'APEMH de "Prix de l'inclusion numérique" fir hirt innovativt Projet "Starter Pack". Dëst ass méi wéi just en Präis - et ass d'Unerkennung vun engem wichtege Schrëtt fir méi digital Inklusioun zu Lëtzebuerg.
+De 17. Mee 2025 krut d'APEMH de "Prix de l'inclusion numérique" fir hiren innovative Projet "Starter Pack". Dëst ass méi wéi just en Präis - et ass d'Unerkennung vun engem wichtege Schrëtt fir méi digital Inklusioun zu Lëtzebuerg.
+
+:::html
+<div style="padding:56.25% 0 0 0;position:relative;margin:2rem 0;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/hpYmQ4T1BYE?si=SrGjH461Hej4jVQM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+:::
 
 ### Wat ass de Projet Starter Pack?
 
