@@ -15,6 +15,10 @@ on:
     branches: [ main ]
   workflow_dispatch:  # Allow manual triggering
 
+concurrency:
+  group: build-deploy-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest

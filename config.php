@@ -26,7 +26,7 @@ $articles = [
         'title' => 'Wéi schreiwe mer a Liichter Sprooch? Eng praktesch Uleedung',
         'description' => 'Eng komplett Uleedung fir Texter a Liichter Sprooch ze schreiwen. Léiert déi wichtegst Reegelen, Beispiller aus der Praxis, a wéi een Texter validéiert kritt.',
         'category' => 'Reegelen & Praxis',
-        'date' => '2025-01-14',
+        'date' => '2025-11-09',
         'markdown_file' => '/assets/artikelen/Wei schreiwe mer a Liichter Sprooch.md',
         'author' => 'Liicht Sprooch Team'
     ],
