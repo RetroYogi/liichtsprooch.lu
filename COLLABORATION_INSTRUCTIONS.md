@@ -6,9 +6,7 @@ GitHub automatically builds and deploys your changes in ~2 minutes. You never ne
 
 ---
 
-## Method 1: Edit on GitHub.com (Easiest)
-
-**No software installation needed. Works from any device.**
+## Edit on GitHub.com
 
 ### Add a New Article
 
@@ -37,41 +35,14 @@ GitHub automatically builds and deploys your changes in ~2 minutes. You never ne
    ```
 10. Click **"Commit changes"**
 
-**That's it!** Wait 2 minutes and your article is live.
+**That's it!**
 
-### Fix a Typo
+### Edit an Existing Article
 
-1. Click the file you want to edit
+1. Click the file you want to edit in `assets/artikelen/`
 2. Click the **pencil icon**
-3. Make your change
+3. Make your change and follow the rules of the markdown format
 4. Click **"Commit changes"**
-
-Done! Auto-deploys in 2 minutes.
-
----
-
-## Method 2: Edit with Git (For Developers)
-
-```bash
-# Clone repository (first time only)
-git clone https://github.com/USERNAME/liichtsprooch.git
-cd liichtsprooch
-
-# Create your article
-vim "assets/artikelen/New Article.md"
-
-# Update config
-vim config.php
-
-# Commit and push
-git add .
-git commit -m "Add article: New Article"
-git push
-
-# Done! Auto-deploys in 2 minutes
-```
-
-**Note:** You do NOT need to run `php build.php`. GitHub does it automatically.
 
 ---
 
@@ -83,24 +54,6 @@ Choose from these categories in `config.php`:
 - `Reegelen & Praxis` - Rules & Practice  
 - `Ressourcen` - Resources
 - `Technologie` - Technology
-
----
-
-## What Happens Automatically
-
-```
-You edit and push
-       ↓
-GitHub Actions runs
-       ↓
-Builds the site
-       ↓
-Deploys to GitHub Pages
-       ↓
-Live in 2 minutes
-```
-
-Check progress: Repository → **Actions** tab
 
 ---
 
@@ -186,12 +139,12 @@ Léiert wéi Klaro funktionéiert a firwat si wichteg fir Inclusioun sinn.
 
 ❌ **Bad (too commercial):**
 ```
-Buchen Sie jetzt! Die beste Easy Language Dienstleistung in Luxemburg!
+Elo kaafen! Déi beschten Reegelen zur Liichter Sprooch zu Lëtzebuerg!
 ```
 
 #### Writing Keywords
 
-**Format:** Luxembourgish first, then German, comma-separated
+**Format:** Luxembourgish first, then German if needed, comma-separated
 
 ✅ **Good:**
 ```
@@ -200,7 +153,7 @@ Buchen Sie jetzt! Die beste Easy Language Dienstleistung in Luxemburg!
 ```
 
 **Tips:**
-- Mix Luxembourgish and German terms (helps both language speakers find content)
+- Mix Luxembourgish and German terms (helps to find content in search engines)
 - Use natural phrases people actually search for
 - Include organization/concept names mentioned in article
 - 5-10 keywords is optimal
