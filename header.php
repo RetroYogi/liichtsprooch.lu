@@ -16,6 +16,7 @@ $articleUrlPattern = $isStatic ? '/artikel/%s/' : '/artikel/%s';
     <meta name="description" content="<?php echo htmlspecialchars($metaDescription ?? SITE_DESCRIPTION); ?>">
     <meta name="keywords" content="<?php echo htmlspecialchars($metaKeywords ?? SITE_KEYWORDS); ?>">
     <meta name="robots" content="<?php echo $robots ?? 'index, follow'; ?>">
+    <meta name="yandex-verification" content="8a8d0d581fbf37cf" />
     <?php if (isset($articleAuthor)): ?>
     <meta name="author" content="<?php echo htmlspecialchars($articleAuthor); ?>">
     <?php endif; ?>
