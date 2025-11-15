@@ -19,18 +19,75 @@
             <h2 id="recent-articles-title">Aktuell Artikelen</h2>
             <p>Entdeckt nei Artikelen iwwer Liicht Sprooch zu Lëtzebuerg:</p>
 
-            <div class="articles-grid">
-                <?php foreach ($recentArticles as $article): ?>
-                <article class="article-card">
-                    <div class="article-card-header">
-                        <span class="article-card-category"><?php echo htmlspecialchars($article['category']); ?></span>
-                        <time datetime="<?php echo $article['date']; ?>"><?php echo formatDateLB($article['date']); ?></time>
+            <!-- Articles Container with ARIA live region for accessibility -->
+            <div class="articles-container"
+                 data-current-offset="0"
+                 data-per-page="3"
+                 data-total-articles="<?php echo count(getAllArticles()); ?>">
+
+                <!-- Pagination Controls - Top (Desktop) -->
+                <nav class="articles-pagination articles-pagination-top"
+                     aria-label="Artikelen Navigatioun">
+                    <button class="pagination-btn pagination-prev"
+                            aria-label="Zréck zu virege Artikelen"
+                            disabled>
+                        <span class="pagination-icon" aria-hidden="true">←</span>
+                        <span class="pagination-text">Zréck</span>
+                    </button>
+                    <div class="pagination-info" role="status" aria-live="polite">
+                        <span class="visually-hidden">Aktuell Säit: </span>
+                        <span class="pagination-current">1-3</span> vun
+                        <span class="pagination-total"><?php echo count(getAllArticles()); ?></span>
                     </div>
-                    <h3><a href="/artikel/<?php echo urlencode($article['slug']); ?>/"><?php echo htmlspecialchars($article['title']); ?></a></h3>
-                    <p><?php echo htmlspecialchars($article['description']); ?></p>
-                    <a href="/artikel/<?php echo urlencode($article['slug']); ?>/" class="article-card-link">Méi liesen →</a>
-                </article>
-                <?php endforeach; ?>
+                    <button class="pagination-btn pagination-next"
+                            aria-label="Weider zu méi Artikelen">
+                        <span class="pagination-text">Weider</span>
+                        <span class="pagination-icon" aria-hidden="true">→</span>
+                    </button>
+                </nav>
+
+                <!-- Articles Grid with swipe support -->
+                <div class="articles-grid-wrapper" role="region" aria-live="polite" aria-atomic="true">
+                    <div class="articles-grid" id="articles-grid">
+                        <?php
+                        // Show only first 3 articles initially
+                        $initialArticles = array_slice($recentArticles, 0, 3);
+                        foreach ($initialArticles as $article):
+                        ?>
+                        <article class="article-card">
+                            <div class="article-card-header">
+                                <span class="article-card-category"><?php echo htmlspecialchars($article['category']); ?></span>
+                                <time datetime="<?php echo $article['date']; ?>"><?php echo formatDateLB($article['date']); ?></time>
+                            </div>
+                            <h3><a href="/artikel/<?php echo urlencode($article['slug']); ?>/"><?php echo htmlspecialchars($article['title']); ?></a></h3>
+                            <p><?php echo htmlspecialchars($article['description']); ?></p>
+                            <a href="/artikel/<?php echo urlencode($article['slug']); ?>/" class="article-card-link">Méi liesen →</a>
+                        </article>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+
+                <!-- Loading indicator -->
+                <div class="articles-loading" role="status" aria-live="polite" aria-hidden="true">
+                    <span class="loading-spinner" aria-hidden="true"></span>
+                    <span class="loading-text">Artikelen lueden...</span>
+                </div>
+
+                <!-- Pagination Controls - Bottom (Mobile) -->
+                <nav class="articles-pagination articles-pagination-bottom"
+                     aria-label="Artikelen Navigatioun">
+                    <button class="pagination-btn pagination-prev"
+                            aria-label="Zréck zu virege Artikelen"
+                            disabled>
+                        <span class="pagination-icon" aria-hidden="true">←</span>
+                        <span class="pagination-text">Zréck</span>
+                    </button>
+                    <button class="pagination-btn pagination-next"
+                            aria-label="Weider zu méi Artikelen">
+                        <span class="pagination-text">Weider</span>
+                        <span class="pagination-icon" aria-hidden="true">→</span>
+                    </button>
+                </nav>
             </div>
         </section>
 

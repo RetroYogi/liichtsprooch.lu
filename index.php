@@ -6,8 +6,8 @@ require_once 'security-headers.php';
 configureSecureSession();
 setSecurityHeaders(false);  // Homepage, no embeds
 
-// Get recent articles for display
-$recentArticles = getRecentArticles(6);
+// Get recent articles for display (all articles for pagination)
+$recentArticles = getAllArticles();
 
 // Page meta variables for header template
 $currentPage = 'home';
