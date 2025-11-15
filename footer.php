@@ -35,5 +35,10 @@
             });
         });
     </script>
+
+    <!-- Articles pagination script (homepage only) -->
+    <?php if (isset($currentPage) && $currentPage === 'home'): ?>
+    <script src="/assets/articles-pagination.js"></script>
+    <?php endif; ?>
 </body>
 </html>
