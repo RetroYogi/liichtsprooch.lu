@@ -297,11 +297,10 @@ section {
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: box-shadow 0.2s ease;
 }
 
 .importance-item:hover {
-    transform: translateY(-4px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
@@ -348,11 +347,10 @@ section {
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: box-shadow 0.2s ease;
 }
 
 .tool-item:hover {
-    transform: translateY(-4px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
@@ -400,11 +398,10 @@ section {
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: box-shadow 0.2s ease;
 }
 
 .organization-item:hover {
-    transform: translateY(-4px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
@@ -451,11 +448,10 @@ section {
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: box-shadow 0.2s ease;
 }
 
 .application-item:hover {
-    transform: translateY(-4px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
@@ -1079,13 +1075,12 @@ footer a {
     padding: 2rem;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
 }
 
 .article-card:hover {
-    transform: translateY(-4px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
