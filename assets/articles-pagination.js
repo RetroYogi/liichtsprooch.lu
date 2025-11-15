@@ -10,9 +10,11 @@
     // Configuration
     const config = {
         articlesJsonUrl: '/articles.json',
-        desktopPerPage: 3,
-        mobilePerPage: 1,
-        mobileBreakpoint: 768,
+        mobilePerPage: 1,        // < 640px
+        mediumPerPage: 2,        // 640px - 1023px
+        desktopPerPage: 3,       // >= 1024px
+        mobileBreakpoint: 640,
+        mediumBreakpoint: 1024,
         swipeThreshold: 50, // Minimum swipe distance in pixels
         animationDuration: 300
     };
@@ -25,7 +27,7 @@
         allArticles: [], // Cache all articles
         isLoading: false,
         isInitialized: false,
-        isMobile: false,
+        screenSize: 'desktop', // 'mobile', 'medium', or 'desktop'
         swipeStartX: 0,
         swipeEndX: 0
     };
@@ -119,15 +121,26 @@
      * Update items per page based on screen size
      */
     function updatePerPage() {
-        const wasMobile = state.isMobile;
-        state.isMobile = window.innerWidth < config.mobileBreakpoint;
-        state.perPage = state.isMobile ? config.mobilePerPage : config.desktopPerPage;
+        const previousScreenSize = state.screenSize;
+        const width = window.innerWidth;
+
+        // Determine screen size
+        if (width < config.mobileBreakpoint) {
+            state.screenSize = 'mobile';
+            state.perPage = config.mobilePerPage;
+        } else if (width < config.mediumBreakpoint) {
+            state.screenSize = 'medium';
+            state.perPage = config.mediumPerPage;
+        } else {
+            state.screenSize = 'desktop';
+            state.perPage = config.desktopPerPage;
+        }
 
         // Update data attribute
         elements.container.dataset.perPage = state.perPage;
 
-        // If switching between mobile/desktop, reload current page
-        if (wasMobile !== state.isMobile && wasMobile !== undefined && state.isInitialized) {
+        // If switching between screen sizes, reload current page
+        if (previousScreenSize !== state.screenSize && previousScreenSize !== undefined && state.isInitialized) {
             loadArticles(state.currentOffset);
         }
     }
@@ -289,13 +302,12 @@
                     // Announce to screen readers
                     announcePageChange();
 
-                    // Scroll to top of articles section smoothly
-                    elements.container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-                    // Focus on first article for keyboard users
+                    // Focus on first article for keyboard users (without scrolling)
                     const firstArticle = elements.grid.querySelector('.article-card h3 a');
                     if (firstArticle) {
-                        setTimeout(() => firstArticle.focus(), 100);
+                        setTimeout(() => {
+                            firstArticle.focus({ preventScroll: true });
+                        }, 100);
                     }
                 } else {
                     showError();

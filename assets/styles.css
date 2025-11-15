@@ -1156,28 +1156,10 @@ footer a {
     transition: opacity 0.3s ease;
 }
 
-/* Mobile: Horizontal scroll with peek effect */
-@media (max-width: 767px) {
-    .articles-grid {
-        display: flex;
-        gap: 1rem;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none; /* IE/Edge */
-        padding-bottom: 1rem;
-    }
-
-    .articles-grid::-webkit-scrollbar {
-        display: none; /* Chrome/Safari */
-    }
-
-    .article-card {
-        flex: 0 0 90%; /* Show 90% of card + 10% peek of next */
-        scroll-snap-align: start;
-        max-width: 90%;
-    }
+/* Ensure full width for all article cards */
+.article-card {
+    width: 100%;
+    max-width: 100%;
 }
 
 /* Pagination Controls */
@@ -1189,19 +1171,14 @@ footer a {
     margin: 1.5rem 0;
 }
 
-/* Hide top pagination on mobile */
+/* Always hide top pagination */
 .articles-pagination-top {
     display: none;
 }
 
-@media (min-width: 768px) {
-    .articles-pagination-top {
-        display: flex;
-    }
-
-    .articles-pagination-bottom {
-        display: none;
-    }
+/* Always show bottom pagination */
+.articles-pagination-bottom {
+    display: flex;
 }
 
 /* Pagination Buttons */
@@ -1245,7 +1222,7 @@ footer a {
 }
 
 /* Mobile: Icon only on pagination buttons */
-@media (max-width: 767px) {
+@media (max-width: 639px) {
     .pagination-btn {
         padding: 0.75rem;
         min-width: 48px;
@@ -1272,7 +1249,7 @@ footer a {
     font-weight: 500;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
     .pagination-info {
         display: block;
     }
