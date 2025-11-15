@@ -98,6 +98,30 @@ $articles = [
         'image' => '/assets/ls-logo.png'
     ],
     [
+        'slug' => 'cap-falc-innovatioun-aus-frankraich',
+        'title' => 'Cap FALC - Innovatioun aus Frankräich fir méi Liicht Sprooch',
+        'description' => 'Entdeckt Cap FALC, den innovativen Tool aus Frankräich deen Kënschtlech Intelligenz a Participatioun kombinéiert. Wéi d\'UNAPEI e Tool entwéckelt huet deen vu Leit mat Beanträchtegung selwer gebaut gouf.',
+        'category' => 'Technologie',
+        'date' => '2025-11-15',
+        'markdown_file' => '/assets/artikelen/Cap_FALC_-_Innovatioun_aus_Frankraich.md',
+        'author' => 'Liicht Sprooch Team',
+        'keywords' => 'Cap FALC, UNAPEI, KI, Kënschtlech Intelligenz, FALC, Frankräich, Participatioun, Transcriptioun, Meta AI, INRIA, Kollaboratioun, Tool',
+        'reading_time_minutes' => 7,
+        'image' => '/assets/Cap-FALC-laptop.webp'
+    ],
+    [
+        'slug' => 'cap-falc-a-accessilingua-verglach',
+        'title' => 'Cap FALC a Accessilingua - Zwou Weeër fir d\'selwecht Zil',
+        'description' => 'E Verglach tëschent Cap FALC aus Frankräich an Accessilingua aus Lëtzebuerg. Zwou Tools déi Kënschtlech Intelligenz benotzen, mä mat ënnerschiddlechen Approchen a Philosophien.',
+        'category' => 'Technologie',
+        'date' => '2025-11-15',
+        'markdown_file' => '/assets/artikelen/Cap_FALC_a_Accessilingua_Verglach.md',
+        'author' => 'Liicht Sprooch Team',
+        'keywords' => 'Cap FALC, Accessilingua, Verglach, Comparaison, KI, UNAPEI, GovTech Lab, Lëtzebuerg, Frankräich, Participatioun, Technologie, FALC',
+        'reading_time_minutes' => 6,
+        'image' => '/assets/Cap-FALC-laptop.webp'
+    ],
+    [
         'slug' => 'den-cdi',
         'title' => 'CDI - En anere Player am Beräich Liicht Sprooch',
         'description' => 'Niewent Klaro gëtt et de Service Leichte Sprache vum CDI, deen sech besonnesch op de Bildungsberäich konzentréiert. Entdeckt säin Roll a säi Service.',
