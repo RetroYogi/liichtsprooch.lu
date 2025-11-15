@@ -167,10 +167,9 @@ section {
     background: rgba(255, 255, 255, 0.7);
 }
 .content-section {
-    background-color: #f8f9fa;
+    background-color: #f1f1f1;
     padding: 2.5rem;
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
@@ -1154,14 +1153,14 @@ footer a {
 
 .articles-container {
     position: relative;
-    margin: 2rem 0;
+    margin: 0;
 }
 
 /* Articles Grid Wrapper for transitions and swipe */
 .articles-grid-wrapper {
     position: relative;
     overflow: hidden;
-    margin: 2rem 0;
+    margin: 0;
 }
 
 /* Grid transitions */

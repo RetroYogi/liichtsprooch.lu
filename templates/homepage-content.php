@@ -25,6 +25,27 @@
                  data-per-page="3"
                  data-total-articles="<?php echo count(getAllArticles()); ?>">
 
+                 <!-- Pagination Controls - Bottom -->
+                <nav class="articles-pagination articles-pagination-bottom"
+                     aria-label="Artikelen Navigatioun">
+                    <button class="pagination-btn pagination-prev"
+                            aria-label="Zréck zu virege Artikelen"
+                            disabled>
+                        <span class="pagination-icon" aria-hidden="true">←</span>
+                        <span class="pagination-text">Zréck</span>
+                    </button>
+                    <div class="pagination-info" role="status" aria-live="polite">
+                        <span class="visually-hidden">Aktuell Säit: </span>
+                        <span class="pagination-current">1-3</span> vun
+                        <span class="pagination-total"><?php echo count(getAllArticles()); ?></span>
+                    </div>
+                    <button class="pagination-btn pagination-next"
+                            aria-label="Weider zu méi Artikelen">
+                        <span class="pagination-text">Weider</span>
+                        <span class="pagination-icon" aria-hidden="true">→</span>
+                    </button>
+                </nav>
+
                 <!-- Articles Grid with swipe support -->
                 <div class="articles-grid-wrapper" role="region" aria-live="polite" aria-atomic="true">
                     <div class="articles-grid" id="articles-grid">
@@ -52,26 +73,6 @@
                     <span class="loading-text">Artikelen lueden...</span>
                 </div>
 
-                <!-- Pagination Controls - Bottom -->
-                <nav class="articles-pagination articles-pagination-bottom"
-                     aria-label="Artikelen Navigatioun">
-                    <button class="pagination-btn pagination-prev"
-                            aria-label="Zréck zu virege Artikelen"
-                            disabled>
-                        <span class="pagination-icon" aria-hidden="true">←</span>
-                        <span class="pagination-text">Zréck</span>
-                    </button>
-                    <div class="pagination-info" role="status" aria-live="polite">
-                        <span class="visually-hidden">Aktuell Säit: </span>
-                        <span class="pagination-current">1-3</span> vun
-                        <span class="pagination-total"><?php echo count(getAllArticles()); ?></span>
-                    </div>
-                    <button class="pagination-btn pagination-next"
-                            aria-label="Weider zu méi Artikelen">
-                        <span class="pagination-text">Weider</span>
-                        <span class="pagination-icon" aria-hidden="true">→</span>
-                    </button>
-                </nav>
             </div>
         </section>
 
