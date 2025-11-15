@@ -2,7 +2,7 @@
 
 ## Wann d'Kënschtlech Intelligenz d'Transcripteuren ënnerstëtzt
 
-A Frankräich huet d'UNAPEI, déi grouss national Associatioun fir Leit mat intellektueller Beanträchtegung, e besonnesche Wee gaangen: Mat Cap FALC hunn si en Tool entwéckelt, deen net nëmmen KI benotzt, mä deen och vu Leit mat Beanträchtegung selwer gebaut gouf. E Modell, dat weist wéi Participatioun a Technologie zesummeschaffe kënnen.
+A Frankräich huet d'UNAPEI, déi grouss national Associatioun fir Leit mat intellektueller Beanträchtegung, e besonnesche Wee gaangen: Mat Cap FALC hunn si en Tool entwéckelt, deen net nëmmen KI benotzt, mä deen och zesumme mat Leit mat Beanträchtegung a mat Transkripteure gebaut gouf. E Modell, dee weist wéi Participatioun an der Entwécklung vun Technologie funktionnéiere kann.
 
 ### Wat ass Cap FALC?
 

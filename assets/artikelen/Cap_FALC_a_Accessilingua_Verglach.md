@@ -1,4 +1,4 @@
-# **Cap FALC a Accessilingua - Zwou Weeër fir d'selwecht Zil**
+# **Cap FALC a Accessilingua - Zwee Weeër an dat selwecht Zil**
 
 ## Wéi Frankräich a Lëtzebuerg un der Zukunft vun der Liichter Sprooch schaffen
 

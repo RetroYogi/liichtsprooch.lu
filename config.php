@@ -111,7 +111,7 @@ $articles = [
     ],
     [
         'slug' => 'cap-falc-a-accessilingua-verglach',
-        'title' => 'Cap FALC a Accessilingua - Zwou Weeër fir d\'selwecht Zil',
+        'title' => 'Cap FALC a Accessilingua - Zwee Weeër an dat selwecht Zil',
         'description' => 'E Verglach tëschent Cap FALC aus Frankräich an Accessilingua aus Lëtzebuerg. Zwou Tools déi Kënschtlech Intelligenz benotzen, mä mat ënnerschiddlechen Approchen a Philosophien.',
         'category' => 'Technologie',
         'date' => '2025-11-15',
