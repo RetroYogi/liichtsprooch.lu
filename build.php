@@ -49,6 +49,10 @@ echo "✓ Generated $articleCount article pages\n";
 generateRSSFeed();
 echo "✓ Generated RSS feed (rss.xml)\n";
 
+// Generate articles JSON for AJAX pagination
+generateArticlesJSON();
+echo "✓ Generated articles JSON (articles.json)\n";
+
 // Generate 404 page
 generate404Page();
 echo "✓ Generated 404 page\n";
@@ -83,7 +87,7 @@ echo "   3. Configure GitHub Pages to serve from /docs folder\n\n";
  */
 function generateHomepage() {
     global $categories;
-    $recentArticles = getRecentArticles(6);
+    $recentArticles = getAllArticles(); // Get all articles for pagination
     $currentPage = 'home';
     $pageTitle = SITE_TITLE;
     $metaDescription = SITE_DESCRIPTION;
@@ -194,6 +198,29 @@ function generateRSSFeed() {
     $rss = ob_get_clean();
 
     file_put_contents(BUILD_DIR . '/rss.xml', $rss);
+}
+
+/**
+ * Generate articles JSON for AJAX pagination
+ */
+function generateArticlesJSON() {
+    $articles = getAllArticles();
+
+    // Format articles for JSON
+    $articlesData = array_map(function($article) {
+        return [
+            'slug' => $article['slug'],
+            'title' => $article['title'],
+            'description' => $article['description'],
+            'category' => $article['category'],
+            'date' => $article['date'],
+            'dateFormatted' => formatDateLB($article['date']),
+            'url' => '/artikel/' . urlencode($article['slug']) . '/'
+        ];
+    }, $articles);
+
+    $json = json_encode($articlesData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+    file_put_contents(BUILD_DIR . '/articles.json', $json);
 }
 
 /**
