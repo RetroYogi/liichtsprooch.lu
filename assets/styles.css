@@ -155,7 +155,9 @@ section {
     display: inline-block;
     padding: 0.5rem;
 }
-.intro-text-background:hover  {
+.intro-text-background:hover,
+.intro-text-background:active,
+.intro-text-background:focus {
     background: rgba(255, 255, 255, 0.7);
 }
 .content-section {

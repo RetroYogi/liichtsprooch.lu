@@ -8,7 +8,7 @@
             </div>
             <div class="hero-content">
                 <h1 id="hero-title">Liicht Sprooch zu Lëtzebuerg</h1>
-                <div class="intro-text-background">
+                <div class="intro-text-background" tabindex="0">
                     <p class="intro-text">Liicht Sprooch ass e wichtegt Instrument fir Inclusioun zu Lëtzebuerg. Si hëlleft Mënschen, déi Schwieregkeete mam Liesen oder Verstoen hunn, un der Gesellschaft deelzehuelen. Dëst Informatiounsblat gëtt en Iwwerbléck iwwer d'Bedeitung, d'Ressourcen an d'Zukunft vun der Liichter Sprooch am Grand-Duché.</p>
                 </div>
             </div>
