@@ -375,7 +375,13 @@
         if (elements.paginationCurrent) {
             const start = state.currentOffset + 1;
             const end = Math.min(state.currentOffset + state.perPage, state.totalArticles);
-            elements.paginationCurrent.textContent = `${start}-${end}`;
+
+            // On mobile (1 article per page), show single number instead of range
+            if (state.perPage === 1) {
+                elements.paginationCurrent.textContent = `${start}`;
+            } else {
+                elements.paginationCurrent.textContent = `${start}-${end}`;
+            }
         }
 
         if (elements.paginationTotal) {
@@ -426,7 +432,14 @@
     function announcePageChange() {
         const start = state.currentOffset + 1;
         const end = Math.min(state.currentOffset + state.perPage, state.totalArticles);
-        const message = `Artikelen ${start} bis ${end} vun ${state.totalArticles} gewise`;
+
+        // On mobile (1 article per page), use singular form
+        let message;
+        if (state.perPage === 1) {
+            message = `Artikel ${start} vun ${state.totalArticles} gewise`;
+        } else {
+            message = `Artikelen ${start} bis ${end} vun ${state.totalArticles} gewise`;
+        }
 
         // Update the live region
         if (elements.paginationInfo) {
