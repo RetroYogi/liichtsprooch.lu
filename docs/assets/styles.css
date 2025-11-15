@@ -1241,18 +1241,12 @@ footer a {
 
 /* Pagination Info */
 .pagination-info {
-    display: none; /* Hidden on mobile */
+    display: block; /* Now shown on all screen sizes including mobile */
     flex: 1;
     text-align: center;
     font-size: 0.95rem;
     color: #333F70;
     font-weight: 500;
-}
-
-@media (min-width: 640px) {
-    .pagination-info {
-        display: block;
-    }
 }
 
 /* Loading Indicator */
