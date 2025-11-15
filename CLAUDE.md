@@ -1,361 +1,389 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Technical documentation for developers working with the Liicht Sprooch website codebase.
 
-## Project Overview
+## Architecture
 
-This is a documentation and website project for **Liicht Sprooch zu Lëtzebuerg** (Easy Language in Luxembourg). The project contains:
+**Hybrid PHP/Static System:**
+- Source files are PHP (index.php, artikel.php, about.php, etc.)
+- `build.php` generates static HTML to `docs/` folder
+- GitHub Pages serves static HTML from `docs/`
+- GitHub Actions auto-builds on every push to main
 
-1. A static website for GitHub Pages promoting and explaining Liicht Sprooch (Easy Language) in Luxembourg
-2. Research materials and information about Liicht Sprooch from various sources
-3. Articles written in Luxembourgish for the liichtsprooch.lu website
-
-**Language Context:** All content is primarily in Luxembourgish (Lëtzebuergesch), with references to German (Leichte Sprache) and French (FALC - Facile à lire et à comprendre). Liicht Sprooch is a simplified form of language designed to help people with reading or comprehension difficulties.
-
-**Deployment:** The website is built as static HTML using a build script and deployed to GitHub Pages with automatic building via GitHub Actions.
+**Why Hybrid?**
+- Development: Dynamic PHP for local testing
+- Production: Static HTML for GitHub Pages (no server-side PHP needed)
+- CI/CD: Automatic builds via GitHub Actions
 
 ## Repository Structure
 
 ```
-/
-├── liichtsprooch.lu/                # Git repository (deployed to GitHub Pages)
-│   ├── Source Files (edit these):
-│   │   ├── config.php               # Article metadata & site configuration
-│   │   ├── build.php                # Static site generator script
-│   │   ├── templates/               # HTML templates for generation
-│   │   ├── assets/
-│   │   │   ├── styles.css           # Modern CSS with WCAG compliance
-│   │   │   └── artikelen/           # Markdown article files
-│   │   └── .github/workflows/       # GitHub Actions for auto-build
-│   │
-│   ├── Generated Files (auto-created by build.php):
-│   │   └── docs/                    # Static HTML (GitHub Pages serves this)
-│   │       ├── index.html
-│   │       ├── artikel/
-│   │       │   └── slug/index.html  # Path-like URLs
-│   │       ├── assets/              # Copied from source
-│   │       ├── rss.xml
-│   │       └── CNAME                # Custom domain config
-│   │
-│   └── Documentation (for contributors, visible on GitHub):
-│       ├── README.md                # Main repository documentation
-│       ├── START_HERE.md            # Entry point for new contributors
-│       ├── HOW_TO_EDIT.md           # Instructions for content editors
-│       ├── HTML_EMBEDS.md           # How to embed HTML in articles
-│       └── SECURITY.md              # Security documentation
+liichtsprooch.lu/
+├── Source Files (PHP):
+│   ├── index.php                # Homepage (dynamic)
+│   ├── artikel.php              # Article page (dynamic)
+│   ├── about.php                # About page (dynamic)
+│   ├── rss.php                  # RSS feed (dynamic)
+│   ├── config.php               # Article metadata & site config
+│   ├── build.php                # Static site generator script
+│   ├── Parsedown.php            # Markdown parser (v1.7.4)
+│   ├── HtmlEmbed.php            # Safe HTML embed handler
+│   ├── security.php             # Rate limiting, bot detection
+│   ├── security-headers.php     # CSP, HSTS, session config
+│   ├── header.php               # Shared header template
+│   ├── footer.php               # Shared footer template
+│   ├── templates/
+│   │   ├── homepage-content.php
+│   │   ├── article-content.php
+│   │   ├── about-content.php
+│   │   └── rss-feed.php
+│   ├── api/
+│   │   └── get-articles.php     # AJAX pagination endpoint (dev only)
+│   ├── assets/
+│   │   ├── styles.css           # Main stylesheet
+│   │   ├── articles-pagination.js  # Client-side pagination
+│   │   ├── artikelen/           # Markdown source files
+│   │   └── *.png, *.svg         # Images
+│   ├── .github/workflows/
+│   │   └── build-and-deploy.yml # GitHub Actions workflow
+│   └── CNAME                    # Custom domain
 │
-├── Owner Documentation (private, not in Git):
-│   ├── DEPLOY.md                    # Initial deployment instructions
-│   ├── NEXT_STEPS.txt               # Quick deployment steps
-│   └── SECURITY-FIXES-2025-01-09.md # Historical security fixes record
+├── Generated Files (Static HTML):
+│   └── docs/                    # GitHub Pages root
+│       ├── index.html
+│       ├── artikel/
+│       │   └── {slug}/index.html
+│       ├── about/index.html
+│       ├── assets/              # Copied from source
+│       ├── articles.json        # For client-side pagination
+│       ├── rss.xml
+│       ├── sitemap.xml
+│       ├── 404.html
+│       └── CNAME
 │
-├── liichtsprooch.lu website old/    # Original Gamma-generated website (archived)
-│   ├── index.html                   # Legacy bloated HTML (386KB)
-│   └── assets/                      # Legacy assets (18MB)
-│
-└── Information about Liicht Sprooch/ # Research and reference materials
-    └── [Various .md files with background research]
+└── Documentation (for contributors):
+    ├── README.md                # Main repository docs
+    ├── CLAUDE.md                # This file (dev docs)
+    ├── START_HERE.md            # Entry point
+    ├── COLLABORATION_INSTRUCTIONS.md  # For non-technical contributors
+    ├── HTML_EMBEDS.md           # Embed system docs
+    └── SECURITY.md              # Security documentation
 ```
 
-**Note:** The `liichtsprooch.lu/` folder is now a Git repository pushed to GitHub. When the user refers to "the website", they mean the `liichtsprooch.lu/` folder (previously called "liichtsprooch.lu website new/").
+## Build Process
 
-## Website Architecture
-
-### Current Website ("liichtsprooch.lu/")
-
-A static site generator that builds HTML for GitHub Pages deployment:
-
-**Key Technical Features:**
-- **Static HTML Generation:** PHP build script generates all pages at build-time
-- **Path-like URLs:** `/artikel/slug-name/` using directories with `index.html` files
-- **GitHub Pages Compatible:** No server-side PHP required in production
-- **Automatic Deployment:** GitHub Actions builds site on every push
-- **Semantic HTML5:** Proper structure with `<main>`, `<section>`, `<article>`, `<footer>` elements
-- **WCAG 2.1 AA Compliant:** Tested color contrast, keyboard navigation, screen reader support
-- **Responsive Design:** Mobile-first approach with breakpoints at 640px (tablet), 1024px (desktop)
-- **Modern CSS:** Uses CSS Grid, Flexbox, custom properties, `clamp()` for fluid typography
-
-**Design System:**
-- Primary Accent: `#26A688` (Teal/Green)
-- Text Color: `#333F70` (Dark Blue)
-- Background: `#ffffff` (White)
-- Light Background: `#f8f9fa`
-- Headings: Unbounded (Google Fonts)
-- Body: Open Sans (Google Fonts)
-- Base font size: 16px
-- Line height: 1.7 (body), 1.3 (headings)
-
-**Build Process:**
-- Source: Markdown articles in `assets/artikelen/`
-- Build: `php build.php` generates static HTML in `docs/`
-- Deploy: GitHub Actions automatically runs build on push
-- Hosting: GitHub Pages serves from `docs/` folder
-- Total generated size: 2.8 MB (31 files)
-
-### Running the Website Locally
+### Local Development
 
 ```bash
-# Build the static site
-cd liichtsprooch.lu
+# Edit source files (PHP, markdown, templates)
+vim assets/artikelen/article.md
+vim config.php
+
+# Build static site
 php build.php
 
-# Preview locally
-cd docs
+# Preview locally (serves PHP version)
 php -S localhost:8000
 
-# Visit http://localhost:8000 in your browser
+# Or preview static build
+cd docs && php -S localhost:8000
 ```
 
-**Note:** PHP 7.4+ is only needed for building, not for production (GitHub Pages serves static HTML).
+### Production Deployment
 
-## Content Guidelines
-
-When working with content in this repository:
-
-1. **Language:** Content is in Luxembourgish. Be aware of special characters: ä, ë, é, ü, etc.
-2. **Terminology Consistency:**
-   - Luxembourgish: Liicht Sprooch
-   - German: Leichte Sprache
-   - French: FALC (Facile à lire et à comprendre)
-3. **Key Organizations:**
-   - Klaro - Official center for Liicht Sprooch (part of APEMH)
-   - CDI (Centre de Documentation et d'Information sur le handicap)
-   - Atelier Isie - Workshop for Liicht Sprooch
-   - Accessilingua - Language accessibility service
-
-## Editing the Website
-
-**The user typically refers to "liichtsprooch.lu/" when they say "the website".**
-
-### For Content (Articles)
-
-Edit markdown files and metadata, then the site auto-rebuilds:
-
-1. **Add/Edit Articles:** Edit markdown files in `assets/artikelen/`
-2. **Update Metadata:** Edit `config.php` to add article info
-3. **Build Site:** Run `php build.php` OR push to GitHub (auto-builds via GitHub Actions)
-4. **Generated Output:** Static HTML appears in `docs/` folder
-
-### For Design/Layout
-
-1. **Templates:** Edit files in `templates/` folder
-2. **Styles:** Edit `assets/styles.css`
-3. **Build Script:** Modify `build.php` if needed
-4. **Images:** Add to `assets/` (auto-copied to `docs/assets/` during build)
-
-### Collaboration Workflow
-
-**Simple:** Anyone can edit markdown files on GitHub.com and push changes. GitHub Actions automatically:
-1. Runs `php build.php`
-2. Generates `docs/` folder
-3. Commits and deploys to GitHub Pages
-4. Site is live in 2 minutes
-
-**Nobody needs PHP installed to contribute articles.**
-
-**Accessibility Requirements When Editing:**
-- Maintain WCAG 2.1 AA compliance
-- Keep color contrast ratios for text (#333F70 on #ffffff)
-- Ensure all interactive elements are keyboard accessible
-- Use semantic HTML elements
-- Provide alt text for images (or `role="presentation"` for decorative images)
-- Test with `prefers-reduced-motion` and `prefers-contrast: high`
-
-## Common Tasks
-
-### Adding a New Article
-
-**Step 1:** Create the Markdown file in `/assets/artikelen/`:
-
+**Automatic (recommended):**
 ```bash
-cd "/assets/artikelen/"
-# Create your new article as a .md file (e.g., "Neien Artikel.md")
+git add .
+git commit -m "Update article"
+git push origin main
+# GitHub Actions runs build.php automatically
+# Site deployed to GitHub Pages in ~2 minutes
 ```
 
-**Step 2:** Add article metadata to `config.php`:
+**Manual build (if needed):**
+```bash
+php build.php
+git add docs/
+git commit -m "Rebuild static site"
+git push
+```
 
+## Key Technical Features
+
+### Security System
+
+**Files:** `security.php`, `security-headers.php`
+
+- **CSP (Content Security Policy):** Different policies for article pages (embeds allowed) vs other pages
+- **Rate Limiting:** File-based (60 req/min), persists across sessions
+- **Bot Detection:** Blocks suspicious user agents
+- **Path Traversal Protection:** `realpath()` validation
+- **XSS Prevention:** Parsedown safe mode, HTML escaping
+- **Session Security:** HttpOnly, SameSite=Strict, regeneration, 30min timeout
+- **HSTS:** Enforced on HTTPS
+
+### HTML Embed System
+
+**File:** `HtmlEmbed.php`
+
+Safe iframe embedding for videos (YouTube, Vimeo, etc.):
+- Whitelist-based domain validation
+- Placeholder system for markdown processing
+- CSP integration
+
+**Usage in markdown:**
+```markdown
+[EMBED]
+<iframe src="https://www.youtube.com/embed/VIDEO_ID"></iframe>
+[/EMBED]
+```
+
+### AJAX Pagination
+
+**Files:** `assets/articles-pagination.js`, `docs/articles.json`
+
+- Responsive: 1 article (mobile) / 2 (tablet) / 3 (desktop)
+- Client-side rendering from cached JSON
+- Swipe support for mobile
+- Keyboard navigation (arrow keys)
+- WCAG compliant (ARIA, screen reader announcements)
+- No auto-scroll (better UX)
+
+### Article Configuration
+
+**File:** `config.php`
+
+Each article has:
 ```php
 [
-    'slug' => 'neien-artikel',
-    'title' => 'Your Article Title',
-    'description' => 'SEO-optimized description (150-160 characters)',
-    'category' => 'Organisatiounen', // or other category
-    'date' => '2025-01-XX',
-    'markdown_file' => '/assets/artikelen/Neien Artikel.md',
-    'author' => 'Liicht Sprooch Team'
-],
+    'slug' => 'url-slug',
+    'title' => 'Article Title',
+    'description' => 'SEO description (150-160 chars)',
+    'category' => 'Category Name',
+    'date' => 'YYYY-MM-DD',
+    'markdown_file' => '/assets/artikelen/File.md',
+    'author' => 'Author Name',
+    'keywords' => 'SEO, keywords, comma-separated',
+    'reading_time_minutes' => 5,
+    'image' => '/assets/image.png'  // Optional
+]
 ```
 
-The article will automatically appear:
-- In the navigation dropdown (under its category)
-- On the homepage (if it's among the 6 most recent)
-- In the RSS feed
+## Design System
 
-### Rebuilding the Site
+**Typography:**
+- Headings: Unbounded (Google Fonts)
+- Body: Open Sans (Google Fonts)
+- Base: 16px, Line height: 1.7 (body), 1.3 (headings)
+- Fluid typography: `clamp()` for responsive sizing
 
-```bash
-# After editing any source files, rebuild:
-cd liichtsprooch.lu
-php build.php
-
-# This regenerates the docs/ folder with updated static HTML
+**Colors:**
+```css
+--primary: #26A688;      /* Teal/Green accent */
+--text: #333F70;         /* Dark blue text */
+--background: #ffffff;
+--light-bg: #f8f9fa;
 ```
 
-### Modifying Website Content
-
-```bash
-# Edit the homepage template
-open liichtsprooch.lu/templates/homepage-content.php
-
-# Edit article configuration
-open liichtsprooch.lu/config.php
-
-# Edit styles
-open liichtsprooch.lu/assets/styles.css
-
-# After any changes, rebuild:
-php build.php
+**Breakpoints:**
+```css
+Mobile:  < 640px    (1 column)
+Tablet:  640-1023px (2 columns)
+Desktop: ≥ 1024px   (3 columns)
 ```
 
-### Adding New Visual Assets
+**WCAG 2.1 AA Compliance:**
+- Color contrast ratios tested
+- Keyboard navigation
+- Screen reader support
+- `prefers-reduced-motion` support
+- `prefers-contrast: high` support
 
-```bash
-# Add images to assets folder
-cp new-image.png liichtsprooch.lu/assets/
+## Common Development Tasks
 
-# Optimize images before adding (recommended)
-# Use tools like ImageOptim, TinyPNG, or similar
+### Add New Article
 
-# Rebuild to copy to docs/
-php build.php
+1. Create markdown file: `assets/artikelen/article-name.md`
+2. Add metadata to `config.php`
+3. Build: `php build.php` (or push to GitHub)
+
+### Modify Templates
+
+1. Edit: `templates/*.php` or `header.php` / `footer.php`
+2. Rebuild: `php build.php`
+3. Test: Check both PHP version (`php -S`) and static build (`docs/`)
+
+### Update Styles
+
+1. Edit: `assets/styles.css`
+2. Rebuild: `php build.php` (copies to `docs/assets/`)
+3. Test responsive design at all breakpoints
+
+### Add New Page
+
+1. Create PHP source: `new-page.php`
+2. Add to navigation: `header.php`
+3. Add build function to `build.php`
+4. Update sitemap generation
+
+### Security Updates
+
+**Rate Limiting:**
+- Adjust limits in `artikel.php`: `checkRateLimit(60, 60)`
+- Rate limit files stored in `logs/rate_limit/`
+
+**CSP Policy:**
+- Modify in `security-headers.php`
+- Different policies for article pages vs others
+
+**Trusted Embed Domains:**
+- Update whitelist in `HtmlEmbed.php`
+
+## Deployment Configuration
+
+### GitHub Actions
+
+**File:** `.github/workflows/build-and-deploy.yml`
+
+**Triggers:**
+- Push to main branch (when source files change)
+- Pull request to main
+- Manual trigger (workflow_dispatch)
+
+**Process:**
+1. Checkout repository
+2. Setup PHP 8.1
+3. Run `php build.php`
+4. Upload `docs/` as artifact
+5. Deploy to GitHub Pages
+
+### GitHub Pages Settings
+
+- **Source:** Deploy from artifact (not branch)
+- **Custom Domain:** liichtsprooch.lu (configured in CNAME)
+- **Enforce HTTPS:** Enabled
+
+## Dependencies
+
+**PHP (build-time only):**
+- PHP 7.4+ (8.1 recommended)
+- No Composer dependencies
+- Libraries included: Parsedown.php (v1.7.4)
+
+**Runtime (GitHub Pages):**
+- Pure static HTML/CSS/JavaScript
+- No server-side processing
+- No database
+
+**External Resources:**
+- Google Fonts (Unbounded, Open Sans)
+- Embedded iframes (YouTube, Vimeo, etc. - whitelisted)
+
+## Language Context
+
+**Content Language:** Luxembourgish (Lëtzebuergesch)
+
+**Special Characters:** ä, ë, é, ü (ensure UTF-8 encoding)
+
+**Key Terms:**
+- Luxembourgish: Liicht Sprooch
+- German: Leichte Sprache
+- French: FALC (Facile à lire et à comprendre)
+
+**Organizations:**
+- Klaro - Official center (part of APEMH)
+- CDI - Documentation center
+- Atelier Isie - Validation workshop
+
+## Testing Checklist
+
+Before committing major changes:
+
+**Build:**
+- [ ] `php build.php` runs without errors
+- [ ] All articles generate properly
+- [ ] No broken links in navigation
+
+**Security:**
+- [ ] No new XSS vulnerabilities
+- [ ] Path traversal protection intact
+- [ ] CSP headers appropriate
+
+**Accessibility:**
+- [ ] Keyboard navigation works
+- [ ] Focus indicators visible
+- [ ] Color contrast meets WCAG AA
+- [ ] Screen reader compatibility
+- [ ] Valid HTML (W3C validator)
+
+**Responsive:**
+- [ ] Mobile (< 640px)
+- [ ] Tablet (640-1023px)
+- [ ] Desktop (≥ 1024px)
+- [ ] Pagination adapts correctly
+
+**Performance:**
+- [ ] Images optimized
+- [ ] No JavaScript errors in console
+- [ ] Fast load times
+
+## Troubleshooting
+
+**Build fails:**
+- Check PHP version (7.4+)
+- Verify markdown files exist
+- Check `config.php` syntax
+
+**Articles not showing:**
+- Verify metadata in `config.php`
+- Check markdown file path
+- Rebuild with `php build.php`
+
+**Pagination broken:**
+- Check `articles.json` generated
+- Verify JavaScript console for errors
+- Test with different screen sizes
+
+**Security errors:**
+- Check rate limit files in `logs/rate_limit/`
+- Verify CSP headers not blocking resources
+- Test with different browsers
+
+## Git Workflow
+
+**Branches:**
+- `main` - Production (auto-deploys to GitHub Pages)
+- `claude/*` - Feature branches (created by Claude Code)
+
+**Commit Message Format:**
+```
+<type>: <description>
+
+Examples:
+feat: Add new article about Klaro
+fix: Fix pagination on mobile
+docs: Update CLAUDE.md
+style: Improve responsive layout
+security: Update CSP headers
 ```
 
-## Important Notes
+**Before Pushing:**
+1. Test locally (`php -S localhost:8000`)
+2. Build static site (`php build.php`)
+3. Review changes in `docs/`
+4. Commit both source and generated files (or let GitHub Actions handle it)
 
-- **GitHub Pages Ready:** Built for deployment to GitHub Pages with automatic builds
-- **Static Site Generator:** PHP build script (build-time only, not needed in production)
-- **No Database:** All content is file-based (Markdown articles)
-- **Parsedown Library:** Uses Parsedown (open-source) to convert Markdown to HTML during build
-- **Minimal JavaScript:** Only uses JavaScript for mobile navigation menu (progressive enhancement)
-- **GitHub Actions:** Automatically builds and deploys on every push to GitHub
-- **Path-like URLs:** `/artikel/slug-name/` using directory structure with `index.html` files
-- **Legacy Code:** The "old" website folder is kept for reference but should not be modified
-- **Print-Friendly:** The CSS includes print styles for physical document generation
-- **RSS Feed:** Automatically generated at `/rss.xml` with the 20 most recent articles
+## Performance Metrics
 
-## Website Architecture (Static Site Structure)
+**Current build output:**
+- Total files: ~31
+- Total size: ~2.8 MB (including images)
+- Build time: < 5 seconds
+- Deployment time: ~2 minutes (GitHub Actions)
 
-### File Structure
-```
-liichtsprooch.lu/
-├── Source Files (edit these):
-│   ├── config.php              # Article metadata & site config
-│   ├── build.php               # Static site generator script
-│   ├── Parsedown.php           # Markdown parser (v1.7.4)
-│   ├── HtmlEmbed.php           # HTML embed handler
-│   ├── templates/              # HTML templates
-│   │   ├── static-header.php
-│   │   ├── static-footer.php
-│   │   ├── homepage-content.php
-│   │   └── article-content.php
-│   ├── assets/
-│   │   ├── styles.css          # Main stylesheet
-│   │   ├── artikelen/          # Markdown article source files
-│   │   └── *.png, *.svg        # Images and icons
-│   └── .github/workflows/
-│       └── build-and-deploy.yml # GitHub Actions auto-build
-│
-├── Documentation (for contributors):
-│   ├── README.md               # Main repository documentation
-│   ├── START_HERE.md           # Entry point for new contributors
-│   ├── HOW_TO_EDIT.md          # Instructions for content editors
-│   ├── HTML_EMBEDS.md          # How to embed HTML in articles
-│   └── SECURITY.md             # Security documentation
-│
-└── Generated Files (auto-created by build.php):
-    └── docs/                   # GitHub Pages serves this folder
-        ├── index.html
-        ├── artikel/
-        │   └── slug/index.html # Each article in own directory
-        ├── assets/             # Copied from source
-        ├── rss.xml
-        ├── 404.html
-        └── CNAME               # Custom domain configuration
-```
+## Additional Resources
 
-### How It Works
-
-1. **Build Process (`build.php`):**
-   - Reads all articles from `config.php`
-   - Processes Markdown files using Parsedown
-   - Generates static HTML using templates
-   - Creates directory structure with `index.html` files for path-like URLs
-   - Copies all assets to `docs/` folder
-   - Generates RSS feed as static XML file
-
-2. **GitHub Actions Workflow:**
-   - Triggers on push when source files change
-   - Runs `php build.php` automatically
-   - Commits generated `docs/` folder
-   - GitHub Pages deploys from `docs/` folder
-   - Site is live in 2 minutes
-
-3. **URL Structure:**
-   - Homepage: `/` → `docs/index.html`
-   - Articles: `/artikel/slug-name/` → `docs/artikel/slug-name/index.html`
-   - RSS Feed: `/rss.xml` → `docs/rss.xml`
-   - No query strings, no server-side processing needed
-
-4. **Templates:**
-   - Separate PHP template files generate each page type
-   - Templates include navigation, metadata, article content
-   - All PHP code runs at build-time, not runtime
-
-## Responsive Breakpoints
-
-When modifying layouts, use these breakpoints consistently:
-
-- Mobile: < 640px (1 column layouts)
-- Small Tablet: 640px (2 column layouts)
-- Tablet: 768px
-- Desktop: 1024px (3-4 column layouts)
-- Wide Desktop: 1200px (max-width container)
-
-## Accessibility Testing Checklist
-
-When making changes to the website:
-
-- [ ] Test keyboard navigation (Tab, Shift+Tab, Enter, Space)
-- [ ] Verify focus indicators are visible on all interactive elements
-- [ ] Check color contrast with WebAIM Contrast Checker
-- [ ] Test with screen reader (VoiceOver on macOS)
-- [ ] Verify responsive design on mobile, tablet, desktop
-- [ ] Test with `prefers-reduced-motion: reduce`
-- [ ] Validate HTML with W3C Validator (test generated HTML in `docs/`)
-- [ ] Check proper heading hierarchy (h1 → h2 → h3)
-
-## Documentation Files
-
-### In Git Repository (liichtsprooch.lu/ - visible on GitHub)
-These files are for contributors and are checked into the repository:
-- **README.md** - Main repository documentation for all users
-- **START_HERE.md** - Entry point for new contributors
-- **COLLABORATION_INSTRUCTIONS.md** - Instructions for content editors (non-technical)
-- **HTML_EMBEDS.md** - How to safely embed HTML/videos in articles
-- **SECURITY.md** - Security documentation (public-facing)
-
-### Outside Git (root folder - private)
-These files are for the project owner only and NOT checked into Git:
-- **DEPLOY.md** - Initial deployment instructions for GitHub Pages setup
-- **NEXT_STEPS.txt** - Quick deployment steps for initial setup
-- **SECURITY-FIXES-2025-01-09.md** - Historical record of security fixes applied
-
-## Additional Context
-
-- When the user asks to work on "a website" or "the website", they mean **"liichtsprooch.lu/"** (the Git repository)
-- You may use images from `liichtsprooch.lu website old/assets/` in the new website
-- The build script is PHP-based, but NO SQL database is used - all content is file-based
-- The content of the website is written in Luxembourgish, with some terms and quotes in other languages
-- After editing source files, remind the user to run `php build.php` to regenerate the static site
-- When deployed to GitHub, GitHub Actions automatically runs the build script on every push
-- The repository is now initialized with Git and pushed to GitHub
+- [Parsedown Documentation](https://parsedown.org/)
+- [GitHub Pages Documentation](https://docs.github.com/pages)
+- [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
+- [Content Security Policy Reference](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
