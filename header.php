@@ -2,19 +2,49 @@
 // Detect if we're building static site or serving dynamically
 $isStatic = defined('BUILD_DIR');
 
-// Set URL patterns based on context
-$homeUrl = $isStatic ? '/' : '/index.php';
-$aboutUrl = $isStatic ? '/about/' : '/about.php';
-$rssUrl = $isStatic ? '/rss.xml' : '/rss.php';
-$articleUrlPattern = $isStatic ? '/artikel/%s/' : '/artikel/%s';
+// Multilingual support - get site config if available
+if (function_exists('getSiteConfig') && function_exists('getCurrentLanguage')) {
+    $currentLang = getCurrentLanguage();
+    $siteConfigData = getSiteConfig($currentLang);
+    $langConfigData = getLanguageConfig($currentLang);
+
+    // Use site config values (multilingual)
+    $SITE_TITLE = $siteConfigData['title'];
+    $SITE_URL = $siteConfigData['url'];
+    $SITE_DESCRIPTION = $siteConfigData['description'];
+    $SITE_KEYWORDS = $siteConfigData['keywords'];
+    $SITE_LOCALE = $langConfigData['locale'];
+
+    // Set URL patterns based on language
+    $articlePath = $langConfigData['article_path'];
+    $aboutPath = $langConfigData['about_path'];
+    $homeUrl = $isStatic ? '/' : '/index.php';
+    $aboutUrl = $isStatic ? '/' . $aboutPath . '/' : '/about.php';
+    $rssUrl = $isStatic ? '/rss.xml' : '/rss.php';
+    $articleUrlPattern = $isStatic ? '/' . $articlePath . '/%s/' : '/artikel/%s';
+} else {
+    // Fallback to constants (legacy)
+    $SITE_TITLE = defined('SITE_TITLE') ? SITE_TITLE : 'Liicht Sprooch Info-Site';
+    $SITE_URL = defined('SITE_URL') ? SITE_URL : 'https://liichtsprooch.lu';
+    $SITE_DESCRIPTION = defined('SITE_DESCRIPTION') ? SITE_DESCRIPTION : '';
+    $SITE_KEYWORDS = defined('SITE_KEYWORDS') ? SITE_KEYWORDS : '';
+    $SITE_LOCALE = 'lb-LU';
+    $currentLang = 'lb';
+
+    // Set URL patterns based on context
+    $homeUrl = $isStatic ? '/' : '/index.php';
+    $aboutUrl = $isStatic ? '/about/' : '/about.php';
+    $rssUrl = $isStatic ? '/rss.xml' : '/rss.php';
+    $articleUrlPattern = $isStatic ? '/artikel/%s/' : '/artikel/%s';
+}
 ?>
 <!DOCTYPE html>
-<html lang="lb-LU">
+<html lang="<?php echo $SITE_LOCALE; ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="<?php echo htmlspecialchars($metaDescription ?? SITE_DESCRIPTION); ?>">
-    <meta name="keywords" content="<?php echo htmlspecialchars($metaKeywords ?? SITE_KEYWORDS); ?>">
+    <meta name="description" content="<?php echo htmlspecialchars($metaDescription ?? $SITE_DESCRIPTION); ?>">
+    <meta name="keywords" content="<?php echo htmlspecialchars($metaKeywords ?? $SITE_KEYWORDS); ?>">
     <meta name="robots" content="<?php echo $robots ?? 'index, follow'; ?>">
     <meta name="yandex-verification" content="8a8d0d581fbf37cf" />
     <?php if (isset($articleAuthor)): ?>
@@ -23,10 +53,10 @@ $articleUrlPattern = $isStatic ? '/artikel/%s/' : '/artikel/%s';
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="<?php echo $ogType ?? 'website'; ?>">
-    <meta property="og:title" content="<?php echo htmlspecialchars($pageTitle ?? SITE_TITLE); ?>">
-    <meta property="og:description" content="<?php echo htmlspecialchars($metaDescription ?? SITE_DESCRIPTION); ?>">
-    <meta property="og:url" content="<?php echo htmlspecialchars($canonicalUrl ?? SITE_URL); ?>">
-    <meta property="og:image" content="<?php echo SITE_URL . ($articleImage ?? '/assets/ls-logo.png'); ?>">
+    <meta property="og:title" content="<?php echo htmlspecialchars($pageTitle ?? $SITE_TITLE); ?>">
+    <meta property="og:description" content="<?php echo htmlspecialchars($metaDescription ?? $SITE_DESCRIPTION); ?>">
+    <meta property="og:url" content="<?php echo htmlspecialchars($canonicalUrl ?? $SITE_URL); ?>">
+    <meta property="og:image" content="<?php echo $SITE_URL . ($articleImage ?? '/assets/ls-logo.png'); ?>">
     <?php if (isset($articleDate)): ?>
     <meta property="article:published_time" content="<?php echo formatDateISO8601($articleDate); ?>">
     <?php endif; ?>
@@ -39,14 +69,14 @@ $articleUrlPattern = $isStatic ? '/artikel/%s/' : '/artikel/%s';
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="<?php echo htmlspecialchars($pageTitle ?? SITE_TITLE); ?>">
-    <meta property="twitter:description" content="<?php echo htmlspecialchars($metaDescription ?? SITE_DESCRIPTION); ?>">
-    <meta property="twitter:image" content="<?php echo SITE_URL . ($articleImage ?? '/assets/ls-logo.png'); ?>">
+    <meta property="twitter:title" content="<?php echo htmlspecialchars($pageTitle ?? $SITE_TITLE); ?>">
+    <meta property="twitter:description" content="<?php echo htmlspecialchars($metaDescription ?? $SITE_DESCRIPTION); ?>">
+    <meta property="twitter:image" content="<?php echo $SITE_URL . ($articleImage ?? '/assets/ls-logo.png'); ?>">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="<?php echo htmlspecialchars($canonicalUrl ?? SITE_URL); ?>">
+    <link rel="canonical" href="<?php echo htmlspecialchars($canonicalUrl ?? $SITE_URL); ?>">
 
-    <title><?php echo htmlspecialchars($pageTitle ?? SITE_TITLE); ?></title>
+    <title><?php echo htmlspecialchars($pageTitle ?? $SITE_TITLE); ?></title>
 
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="/assets/favicon/favicon.ico">
@@ -66,7 +96,7 @@ $articleUrlPattern = $isStatic ? '/artikel/%s/' : '/artikel/%s';
     <link rel="stylesheet" href="/assets/styles.css">
 
     <!-- RSS Feed -->
-    <link rel="alternate" type="application/rss+xml" title="<?php echo SITE_TITLE; ?> RSS Feed" href="<?php echo $rssUrl; ?>">
+    <link rel="alternate" type="application/rss+xml" title="<?php echo $SITE_TITLE; ?> RSS Feed" href="<?php echo $rssUrl; ?>">
 
     <!-- JSON-LD Schema for SEO -->
     <script type="application/ld+json">
@@ -76,8 +106,8 @@ $articleUrlPattern = $isStatic ? '/artikel/%s/' : '/artikel/%s';
         $schema = [
             "@context" => "https://schema.org",
             "@type" => "NewsArticle",
-            "headline" => $pageTitle ?? SITE_TITLE,
-            "description" => $metaDescription ?? SITE_DESCRIPTION,
+            "headline" => $pageTitle ?? $SITE_TITLE,
+            "description" => $metaDescription ?? $SITE_DESCRIPTION,
             "datePublished" => formatDateISO8601($articleDate),
             "dateModified" => formatDateISO8601($articleDate),
             "author" => [
@@ -86,11 +116,11 @@ $articleUrlPattern = $isStatic ? '/artikel/%s/' : '/artikel/%s';
             ],
             "publisher" => [
                 "@type" => "Organization",
-                "name" => SITE_TITLE,
-                "url" => SITE_URL
+                "name" => $SITE_TITLE,
+                "url" => $SITE_URL
             ],
-            "inLanguage" => "lb-LU",
-            "keywords" => $metaKeywords ?? SITE_KEYWORDS
+            "inLanguage" => $SITE_LOCALE,
+            "keywords" => $metaKeywords ?? $SITE_KEYWORDS
         ];
 
         if (isset($articleCategory)) {
@@ -102,7 +132,7 @@ $articleUrlPattern = $isStatic ? '/artikel/%s/' : '/artikel/%s';
         }
 
         if (isset($articleImage)) {
-            $schema["image"] = SITE_URL . $articleImage;
+            $schema["image"] = $SITE_URL . $articleImage;
         }
 
         echo json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
@@ -111,11 +141,11 @@ $articleUrlPattern = $isStatic ? '/artikel/%s/' : '/artikel/%s';
         $schema = [
             "@context" => "https://schema.org",
             "@type" => "WebSite",
-            "name" => SITE_TITLE,
-            "url" => $canonicalUrl ?? SITE_URL,
-            "description" => $metaDescription ?? SITE_DESCRIPTION,
-            "inLanguage" => ["lb-LU", "de-LU", "fr-LU"],
-            "keywords" => $metaKeywords ?? SITE_KEYWORDS,
+            "name" => $SITE_TITLE,
+            "url" => $canonicalUrl ?? $SITE_URL,
+            "description" => $metaDescription ?? $SITE_DESCRIPTION,
+            "inLanguage" => $SITE_LOCALE,
+            "keywords" => $metaKeywords ?? $SITE_KEYWORDS,
             "about" => [
                 "@type" => "Thing",
                 "name" => "Liicht Sprooch",

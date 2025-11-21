@@ -1,0 +1,10 @@
+# Domain-based routing
+# These redirects route users to the correct language based on domain
+
+# Lëtzebuergesch: liichtsprooch.lu
+# Deutsch: leichtesprache.lu
+# Français: facile-a-lire.lu
+# English: easyread.lu
+
+# Default: redirect root to default language
+/ /lb/ 302

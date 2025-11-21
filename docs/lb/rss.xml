@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>Liicht Sprooch Info-Site</title>
+        <link>https://liichtsprooch.lu</link>
+        <description>Informatiounen iwwer Liicht Sprooch zu Lëtzebuerg - Facile à lire et à comprendre (FALC) - Leichte Sprache - Easy-to-Read.</description>
+        <language>lb</language>
+        <atom:link href="https://liichtsprooch.lu/rss.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Fri, 21 Nov 2025 10:54:53 +0000</lastBuildDate>
+
+            </channel>
+</rss>
